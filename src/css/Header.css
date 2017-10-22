@@ -1,0 +1,7 @@
+.header {
+  background: #aaa;
+  color: white;
+  font-size: 3rem;
+  grid-area: header;
+  text-align: center;
+}
