@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import Chapter from './Chapter';
 
 class MainSection extends Component {
+
   render() {
     return (
       <section className="mainSection">
