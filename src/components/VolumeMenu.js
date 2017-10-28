@@ -29,9 +29,9 @@ class VolumeMenu extends Component {
     const chapterItems = chapters.map(this.createChapterItems);
     return (
       <section className="volumeMenu">
-        <Link to={`/volumes/${this.props.number}/chapters/1`} onClick={() => this.toggleChaptersVisibility()}>
+        <h2 onClick={() => this.toggleChaptersVisibility()}>
           Volume {this.props.number}: {this.props.title}
-        </Link>
+        </h2>
         <ul>
           {
           this.state.chaptersVisible
