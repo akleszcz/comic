@@ -6,12 +6,14 @@ import Chapter from './Chapter';
 class MainSection extends Component {
 
   render() {
+    //const numberOfChaptersPages = this.props.location.state.numberOfPages;
+    //const {numberOfChaptersPages } = this.props.location.state;
     return (
       <section className="mainSection">
         <Route exact path="/" render = {() => (
           <h1>Welcome</h1>
         )}/>
-        <Route path="/volumes/:volumeNumber/chapters/:chapterNumber" component={Chapter}/>
+        <Route path="/volumes/:volumeNumber/chapters/:chapterNumber" component = { Chapter }/>
       </section>
     );
   }

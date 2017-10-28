@@ -22,11 +22,13 @@ class Chapter extends Component {
   render() {
     //const imgDirectory = `../img/volume1/chapter1/thumbnails`;// `../img/volume${volumeNumber}/chapter${chapterNumber}/thumbnails`;
     let pageThumbnails = [];
-    for (let i = 1; i < 3; i++) {
+    const { numberOfPages } = this.props.location.state;//this.props.numberOfPages;
+    for (let i = 1; i < numberOfPages; i++) {
       //const url = `../img/volume1/chapter1/thumbnails/img${i}.png`;
       const filename = `img${i}.png`;
       pageThumbnails.push(this.createPageThumbnail(filename));
     }
+
     //const images = this.importAll(require.context("../img/" + {imgDirectory}, false, /.png/));
     //const pageThumbnails = Object.keys(images).map(this.createPageThumbnail);
     //this.importAll(require.context(`../img/volume${this.props.match.params.volumeNumber}/chapter${this.props.match.params.chapterNumber}/thumbnails`, false, '/.png')).map(this.createPageThumbnail);

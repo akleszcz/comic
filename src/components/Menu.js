@@ -13,11 +13,13 @@ class Menu extends Component {
           chapters: [
             {
               number: 1,
-              title: "The Beginning"
+              title: "The Beginning",
+              numberOfPages: 2
             },
             {
               number: 2,
-              title: "Another chapter"
+              title: "Another chapter",
+              numberOfPages: 1
             }
           ]
         },

@@ -14,7 +14,7 @@ class VolumeMenu extends Component {
 
   createChapterItems(chapter) {
     return <li key={chapter.number}>
-      <Link to={`/volumes/${this.props.number}/chapters/${chapter.number}`}>
+      <Link to={{  pathname: `/volumes/${this.props.number}/chapters/${chapter.number}`,  state: { numberOfPages: chapter.numberOfPages }}}>
         Chapter {chapter.number}: {chapter.title}
       </Link>
     </li>
