@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Chapter.css';
 
 class Chapter extends Component {
   constructor(props, context) {
@@ -10,7 +11,11 @@ class Chapter extends Component {
     const img = require(`../img/volume${this.props.match.params.volumeNumber}/chapter${this.props.match.params.chapterNumber}/thumbnails/${filename}`);
     const pageNumber = filename.substring(3, filename.lastIndexOf('.')); //img1.png -> 1, img2.png -> 2 etc.
     const key = `${this.props.match.params.volumeNumber}-${this.props.match.params.chapterNumber}-${pageNumber}`;
-    return <img key = {key} src={img} alt={`Page ${pageNumber}`}/>
+    return (
+      <div className="cell">
+        <img key = {key} src={img} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
+      </div>
+    );
   }
 
   /*importAll(r) {
@@ -33,13 +38,10 @@ class Chapter extends Component {
     //const pageThumbnails = Object.keys(images).map(this.createPageThumbnail);
     //this.importAll(require.context(`../img/volume${this.props.match.params.volumeNumber}/chapter${this.props.match.params.chapterNumber}/thumbnails`, false, '/.png')).map(this.createPageThumbnail);
     return (
-      <div>
-        <p>
-          Volume {this.props.match.params.volumeNumber}, Chapter {this.props.match.params.chapterNumber}
-        </p>
-        <ul>
-          {pageThumbnails}
-        </ul>
+      <div className="chapter-container">
+        <div className="pages-grid">
+            {pageThumbnails}
+        </div>
       </div>
     );
   }

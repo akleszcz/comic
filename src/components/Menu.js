@@ -14,7 +14,7 @@ class Menu extends Component {
             {
               number: 1,
               title: "The Beginning",
-              numberOfPages: 2
+              numberOfPages: 3
             },
             {
               number: 2,

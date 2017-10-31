@@ -28,7 +28,7 @@ class VolumeMenu extends Component {
     const chapters = this.props.chapters;
     const chapterItems = chapters.map(this.createChapterItems);
     return (
-      <section className="volumeMenu">
+      <section className="volume-menu">
         <h2 onClick={() => this.toggleChaptersVisibility()}>
           Volume {this.props.number}: {this.props.title}
         </h2>
