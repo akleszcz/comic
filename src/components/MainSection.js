@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/MainSection.css';
 import { Route } from 'react-router-dom'
 import Chapter from './Chapter';
+import Page from './Page';
 
 class MainSection extends Component {
 
@@ -13,7 +14,8 @@ class MainSection extends Component {
         <Route exact path="/" render = {() => (
           <h1>Welcome</h1>
         )}/>
-        <Route path="/volumes/:volumeNumber/chapters/:chapterNumber" component = { Chapter }/>
+        <Route exact path="/volumes/:volumeNumber/chapters/:chapterNumber" component = { Chapter }/>
+        <Route path="/volumes/:volumeNumber/chapters/:chapterNumber/pages/:pageNumber" component = { Page }/>
       </section>
     );
   }

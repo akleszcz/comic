@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Chapter.css';
+import { Link } from 'react-router-dom';
 
 class Chapter extends Component {
   constructor(props, context) {
@@ -12,9 +13,9 @@ class Chapter extends Component {
     const pageNumber = filename.substring(3, filename.lastIndexOf('.')); //img1.png -> 1, img2.png -> 2 etc.
     const key = `${this.props.match.params.volumeNumber}-${this.props.match.params.chapterNumber}-${pageNumber}`;
     return (
-      <div className="cell">
+      <Link className="cell" to={{  pathname: `/volumes/${this.props.match.params.volumeNumber}/chapters/${this.props.match.params.chapterNumber}/pages/${pageNumber}`,  state: { numberOfPages: this.props.location.state.numberOfPages }}}>
         <img key = {key} src={img} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
-      </div>
+      </Link>
     );
   }
 
