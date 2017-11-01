@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Page.css';
-import PageNumberSelect from './PageNumberSelect';
+import PageNavigation from './PageNavigation';
 
 class Page extends Component {
   render() {
@@ -8,7 +8,7 @@ class Page extends Component {
     return (
       <div className="page-container">
         <img src={img} alt="Page 1"/>
-        <PageNumberSelect numberOfPages={this.props.location.state.numberOfPages} pageNumber={this.props.location.state.pageNumber}/>
+        <PageNavigation numberOfPages={this.props.location.state.numberOfPages} pageNumber={this.props.location.state.pageNumber}/>
       </div>
     );
   }
