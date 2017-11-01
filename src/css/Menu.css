@@ -1,4 +1,6 @@
 .menu {
   background: #ddd;
   grid-area: menu;
+  /*height: 100vh;*/
+  padding: 10px;
 }

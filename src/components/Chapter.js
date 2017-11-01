@@ -13,7 +13,7 @@ class Chapter extends Component {
     const pageNumber = filename.substring(3, filename.lastIndexOf('.')); //img1.png -> 1, img2.png -> 2 etc.
     const key = `${this.props.match.params.volumeNumber}-${this.props.match.params.chapterNumber}-${pageNumber}`;
     return (
-      <Link className="cell" to={{  pathname: `/volumes/${this.props.match.params.volumeNumber}/chapters/${this.props.match.params.chapterNumber}/pages/${pageNumber}`,  state: { numberOfPages: this.props.location.state.numberOfPages }}}>
+      <Link className="cell" to={{  pathname: `/volumes/${this.props.match.params.volumeNumber}/chapters/${this.props.match.params.chapterNumber}/pages/${pageNumber}`,  state: { numberOfPages: this.props.location.state.numberOfPages, pageNumber: pageNumber }}}>
         <img key = {key} src={img} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
       </Link>
     );
