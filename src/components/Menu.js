@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import VolumeMenu from './VolumeMenu';
 import '../css/Menu.css';
+import volumeStore from '../stores/VolumeStore';
 
 class Menu extends Component {
   constructor(props, context) {
@@ -32,16 +33,15 @@ class Menu extends Component {
       ]
     };
 
-    this.createVolumeItems = this.createVolumeItems.bind(this);
+    this.createVolumeItem = this.createVolumeItem.bind(this);
   }
 
-  createVolumeItems(volume) {
+  createVolumeItem(volume) {
     return <VolumeMenu key={volume.number} number={volume.number} title={volume.title} chapters={volume.chapters}/>
   }
 
   render() {
-    const volumes = this.state.volumes;
-    const volumeItems = volumes.map(this.createVolumeItems);
+    const volumeItems = volumeStore.volumes.map(this.createVolumeItem);
     return (
       <nav className="menu">
         {volumeItems}
