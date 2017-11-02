@@ -17,7 +17,7 @@ class Page extends Component {
   }
 
   render() {
-    const img = require(`../img/volume${this.volumeNumber}/chapter${this.chapterNumber}/thumbnails/page${this.pageNumber}.png`);
+    const img = require(`../img/volume${this.volumeNumber}/chapter${this.chapterNumber}/fullsize/page${this.pageNumber}.png`);
     const numberOfPages = volumeStore.volumes
       .find(volume => volume.number.toString() === this.volumeNumber.toString())
       .chapters.find(chapter => chapter.number.toString() ===

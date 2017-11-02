@@ -3,10 +3,12 @@ import '../css/Chapter.css';
 import { Link } from 'react-router-dom';
 import volumeStore from '../stores/VolumeStore';
 
+let xhr;
 class Chapter extends Component {
   constructor(props, context) {
     super(props, context);
     this.createPageThumbnail = this.createPageThumbnail.bind(this);
+    this.processRequest = this.processRequest.bind(this);
   }
 
   get volumeNumber() {
@@ -27,6 +29,21 @@ class Chapter extends Component {
       </Link>
     );
   }
+
+  componentDidMount() {
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', "http://localhost:3001/api/volumes", true);
+        xhr.send();
+
+        xhr.addEventListener("readystatechange", this.processRequest, false);
+    }
+
+    processRequest() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          alert(xhr.responseText);
+            //var response = JSON.parse(xhr.responseText);
+        }
+    }
 
   render() {
     const chapterDetails = volumeStore.volumes
