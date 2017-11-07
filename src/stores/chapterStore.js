@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import agent from '../agent';
 
 class ChapterStore {
@@ -9,12 +9,6 @@ class ChapterStore {
   @observable isLoading = false;
   @observable thumbnails = [];
 
-  /*constructor(number, title, chapters) {
-    this.number = number;
-    this.title = title;
-    this.chapters = chapters;
-  }*/
-
   @action setVolumeNumber(volumeNumber) {
     this.volumeNumber = volumeNumber;
   }
@@ -23,11 +17,14 @@ class ChapterStore {
     this.chapterNumber = chapterNumber;
   }
 
+  @computed get numberOfPages() {
+    return this.thumbnails.length;
+  }
+
   @action loadThumbnails() {
     this.isLoading = true;
     agent.Chapters.byNumber(this.volumeNumber, this.chapterNumber)
       .then(action(({data}) => {
-        //alert(JSON.stringify(data));
         this.thumbnails = data;
       }))
       .then(action(() => { this.isLoading = false; }));

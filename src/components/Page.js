@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import '../css/Page.css';
 import PageNavigation from './PageNavigation';
-import volumeStore from '../stores/VolumeStore';
+import { inject, observer } from 'mobx-react';
 
+@inject('pageStore')
+@inject('chapterStore')
+@observer
 class Page extends Component {
   get volumeNumber() {
     return this.props.match.params.volumeNumber;
@@ -16,15 +19,19 @@ class Page extends Component {
     return  this.props.match.params.pageNumber;
   }
 
+  componentDidMount() {
+    this.props.pageStore.setVolumeNumber(this.volumeNumber);
+    this.props.pageStore.setChapterNumber(this.chapterNumber);
+    this.props.pageStore.setPageNumber(this.pageNumber);
+    this.props.pageStore.loadPage();
+  }
+
   render() {
-    const img = require(`../img/volume${this.volumeNumber}/chapter${this.chapterNumber}/fullsize/page${this.pageNumber}.png`);
-    const numberOfPages = volumeStore.volumes
-      .find(volume => volume.number.toString() === this.volumeNumber.toString())
-      .chapters.find(chapter => chapter.number.toString() ===
-      this.chapterNumber.toString()).numberOfPages;
+    const filename = this.props.pageStore.filename;
+    const numberOfPages = this.props.chapterStore.numberOfPages;
     return (
       <div className="page-container">
-        <img src={img} alt="Page 1"/>
+        <img src={filename} alt="Page 1"/>
         <PageNavigation numberOfPages={numberOfPages} pageNumber={this.pageNumber} chapterNumber={this.chapterNumber} volumeNumber={this.volumeNumber}/>
       </div>
     );

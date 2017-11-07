@@ -27,24 +27,17 @@ class Chapter extends Component {
 
   createPageThumbnail(thumbnailUrl, index) {
     const pageNumber = index + 1;
-    //const img = require(`../img/volume${this.volumeNumber}/chapter${this.chapterNumber}/thumbnails/${page.fileName}`);
     //const img = require(thumbnailUrl);
     const key = `${this.volumeNumber}-${this.chapterNumber}-${pageNumber}`;
     const pagePath = `/volumes/${this.volumeNumber}/chapters/${this.chapterNumber}/pages/${pageNumber}`;
     return (
-      <Link className="cell" to={{  pathname: pagePath,  state: { pageNumber: pageNumber }}}>
+      <Link className="cell" to={{  pathname: pagePath }}>
         <img key={key} src={thumbnailUrl} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
       </Link>
     );
   }
 
   render() {
-    //const chapterDetails = volumeStore.volumes
-      //.find(volume => volume.number.toString() === this.volumeNumber.toString())
-      //.chapters.find(chapter => chapter.number.toString() ===
-      //this.chapterNumber.toString());
-    //const pages = chapterDetails.pages;
-    //const pageThumbnails = pages.map(this.createPageThumbnail);
     const pageThumbnails = this.props.chapterStore.thumbnails.map(this.createPageThumbnail);;
     return (
       <div className="chapter-container">

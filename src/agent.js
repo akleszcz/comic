@@ -34,7 +34,13 @@ const Chapters = {
     requests.get(`/volumes/${volumeNumber}/chapters`)
 };
 
+const Pages = {
+  byNumber: (volumeNumber, chapterNumber, number) =>
+    requests.get(`/volumes/${volumeNumber}/chapters/${chapterNumber}/pages/${number}`)
+};
+
 export default {
   Volumes,
-  Chapters
+  Chapters,
+  Pages
 };
