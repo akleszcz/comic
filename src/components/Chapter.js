@@ -39,7 +39,7 @@ class Chapter extends Component {
     }
 
     processRequest() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
           alert(xhr.responseText);
             //var response = JSON.parse(xhr.responseText);
         }
