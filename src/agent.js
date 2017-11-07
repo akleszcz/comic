@@ -6,7 +6,7 @@ const API_ROOT = 'http://localhost:3001/api';
 const responseBody = res => res.body;
 
 const handleErrors = err => {
-  if (err)
+  if (err) {
     console.error(err);
   }
   return err;
@@ -24,12 +24,12 @@ const Volumes = {
   all: () =>
     requests.get(`/volumes`),
   byNumber: (number) =>
-    requests.get(`volumes/${number}`);
+    requests.get(`/volumes/${number}`)
 };
 
 const Chapters = {
   byNumber: (volumeNumber, number) =>
-    requests.get(`volumes/${volumeNumber}/chapters/${number}`),
+    requests.get(`/volumes/${volumeNumber}/chapters/${number}`),
   forVolume: (volumeNumber) =>
     requests.get(`/volumes/${volumeNumber}/chapters`)
 };

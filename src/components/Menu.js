@@ -5,11 +5,16 @@ import '../css/Menu.css';
 import { inject, observer } from 'mobx-react';
 
 @inject('volumesStore')
+@observer
 class Menu extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.createVolumeItem = this.createVolumeItem.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.volumesStore.loadVolumes();
   }
 
   createVolumeItem(volume) {

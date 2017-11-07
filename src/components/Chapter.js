@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import '../css/Chapter.css';
 import { Link } from 'react-router-dom';
-import volumeStore from '../stores/VolumeStore';
+import { inject, observer } from 'mobx-react';
 
-let xhr;
+@inject('chapterStore')
+@observer
 class Chapter extends Component {
   constructor(props, context) {
     super(props, context);
     this.createPageThumbnail = this.createPageThumbnail.bind(this);
-    this.processRequest = this.processRequest.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.chapterStore.setVolumeNumber(this.volumeNumber);
+    this.props.chapterStore.setChapterNumber(this.chapterNumber);
+    this.props.chapterStore.loadThumbnails();
   }
 
   get volumeNumber() {
@@ -19,39 +25,27 @@ class Chapter extends Component {
     return  this.props.match.params.chapterNumber;
   }
 
-  createPageThumbnail(page, index) {
+  createPageThumbnail(thumbnailUrl, index) {
     const pageNumber = index + 1;
-    const img = require(`../img/volume${this.volumeNumber}/chapter${this.chapterNumber}/thumbnails/${page.fileName}`);
+    //const img = require(`../img/volume${this.volumeNumber}/chapter${this.chapterNumber}/thumbnails/${page.fileName}`);
+    //const img = require(thumbnailUrl);
     const key = `${this.volumeNumber}-${this.chapterNumber}-${pageNumber}`;
+    const pagePath = `/volumes/${this.volumeNumber}/chapters/${this.chapterNumber}/pages/${pageNumber}`;
     return (
-      <Link className="cell" to={{  pathname: `/volumes/${this.volumeNumber}/chapters/${this.chapterNumber}/pages/${pageNumber}`,  state: { pageNumber: pageNumber }}}>
-        <img key = {key} src={img} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
+      <Link className="cell" to={{  pathname: pagePath,  state: { pageNumber: pageNumber }}}>
+        <img key={key} src={thumbnailUrl} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
       </Link>
     );
   }
 
-  componentDidMount() {
-        xhr = new XMLHttpRequest();
-        xhr.open('GET', "http://localhost:3001/api/volumes", true);
-        xhr.send();
-
-        xhr.addEventListener("readystatechange", this.processRequest, false);
-    }
-
-    processRequest() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          alert(xhr.responseText);
-            //var response = JSON.parse(xhr.responseText);
-        }
-    }
-
   render() {
-    const chapterDetails = volumeStore.volumes
-      .find(volume => volume.number.toString() === this.volumeNumber.toString())
-      .chapters.find(chapter => chapter.number.toString() ===
-      this.chapterNumber.toString());
-    const pages = chapterDetails.pages;
-    const pageThumbnails = pages.map(this.createPageThumbnail);
+    //const chapterDetails = volumeStore.volumes
+      //.find(volume => volume.number.toString() === this.volumeNumber.toString())
+      //.chapters.find(chapter => chapter.number.toString() ===
+      //this.chapterNumber.toString());
+    //const pages = chapterDetails.pages;
+    //const pageThumbnails = pages.map(this.createPageThumbnail);
+    const pageThumbnails = this.props.chapterStore.thumbnails.map(this.createPageThumbnail);;
     return (
       <div className="chapter-container">
         <div className="pages-grid">
