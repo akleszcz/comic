@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import VolumeMenu from './VolumeMenu';
 import '../css/Menu.css';
-import volumeStore from '../stores/VolumeStore';
+//import volumeStore from '../stores/VolumeStore';
+import { inject, observer } from 'mobx-react';
 
+@inject('volumesStore')
 class Menu extends Component {
   constructor(props, context) {
     super(props, context);
@@ -15,7 +17,7 @@ class Menu extends Component {
   }
 
   render() {
-    const volumeItems = volumeStore.volumes.map(this.createVolumeItem);
+    const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
     return (
       <nav className="menu">
         {volumeItems}

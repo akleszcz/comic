@@ -1,7 +1,7 @@
-//import { observable, computed } from 'mobx';
+import { observable, computed } from 'mobx';
 
 class Page {
-  //@observable fileName;
+  @observable fileName;
 
   constructor(fileName) {
     this.fileName = fileName;
@@ -9,9 +9,9 @@ class Page {
 }
 
 class Chapter {
-  //@observable number;
-  //@observable title;
-  //@observable pages = [];
+  @observable number;
+  @observable title;
+  @observable pages = [];
 
   constructor(number, title, pages) {
     this.number = number;
@@ -19,16 +19,16 @@ class Chapter {
     this.pages = pages;
   }
 
-  //@computed
+  @computed
   get numberOfPages() {
     return this.pages.length;
   }
 }
 
 class Volume {
-  //@observable number;
-  //@observable title;
-  //@observable chapters = [];
+  @observable number;
+  @observable title;
+  @observable chapters = [];
 
   constructor(number, title, chapters) {
     this.number = number;
@@ -38,7 +38,7 @@ class Volume {
 }
 
 class VolumeStore {
-  //@observable volumes = [];
+  @observable volumes = [];
   constructor(volumes) {
     this.volumes = volumes;
   }

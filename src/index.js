@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import './css/reset.css';
 import { BrowserRouter, Route } from 'react-router-dom';
+import volumesStore from './stores/volumesStore';
+import { useStrict } from 'mobx';
+import { Provider } from 'mobx-react';
+
+useStrict(true);
+
+const stores = {
+  volumesStore
+};
 
 ReactDOM.render(
-    <BrowserRouter>
-      <Route path="/" component={App}/>
-    </BrowserRouter>,
+  <Provider {...stores}>
+      <BrowserRouter>
+        <Route path="/" component={App}/>
+      </BrowserRouter>
+    </Provider>,
     document.getElementById('root')
 );
