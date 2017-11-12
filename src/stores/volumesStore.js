@@ -20,7 +20,7 @@ class VolumesStore {
   @action loadVolumes() {
     this.isLoading = true;
     agent.Volumes.all()
-      .then(action(({data})  => {
+      .then(action((data)  => {
         this.volumesMap.clear();
         data.forEach(volume => this.volumesMap.set(volume.number, volume));
       }))

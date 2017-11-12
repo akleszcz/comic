@@ -11,7 +11,18 @@ class Chapter extends Component {
     this.createPageThumbnail = this.createPageThumbnail.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.initiateStore();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!(prevProps.match.params.volumeNumber === this.volumeNumber &&
+      prevProps.match.params.chapterNumber === this.chapterNumber)) {
+        this.initiateStore();
+      }
+  }
+
+  initiateStore() {
     this.props.chapterStore.setVolumeNumber(this.volumeNumber);
     this.props.chapterStore.setChapterNumber(this.chapterNumber);
     this.props.chapterStore.loadThumbnails();
@@ -31,8 +42,8 @@ class Chapter extends Component {
     const key = `${this.volumeNumber}-${this.chapterNumber}-${pageNumber}`;
     const pagePath = `/volumes/${this.volumeNumber}/chapters/${this.chapterNumber}/pages/${pageNumber}`;
     return (
-      <Link className="cell" to={{  pathname: pagePath }}>
-        <img key={key} src={thumbnailUrl} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
+      <Link key={key} className="cell" to={{  pathname: pagePath }}>
+        <img src={thumbnailUrl} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
       </Link>
     );
   }

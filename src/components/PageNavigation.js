@@ -23,7 +23,7 @@ class PageNavigation extends Component {
         </Link>
         <Link className={"previous" + firstAndPreviousClass} to={{  pathname: `${basePath}/${previousPageNumber}`,  state: { numberOfPages: this.props.numberOfPages, pageNumber: previousPageNumber }}}/>
         <span>
-          <input type="number" min="1" max={this.props.numberOfPages} value={this.props.pageNumber}></input>/{this.props.numberOfPages}
+          <input type="number" min="1" max={this.props.numberOfPages} value={this.props.pageNumber} onChange={() => {}}></input>/{this.props.numberOfPages}
         </span>
         <Link className={"next" + nextAndLastClass} to={{  pathname: `${basePath}/${nextPageNumber}`,
         state: { numberOfPages: this.props.numberOfPages, pageNumber: nextPageNumber }}}/>

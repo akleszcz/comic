@@ -24,7 +24,7 @@ class ChapterStore {
   @action loadThumbnails() {
     this.isLoading = true;
     agent.Chapters.byNumber(this.volumeNumber, this.chapterNumber)
-      .then(action(({data}) => {
+      .then(action((data) => {
         this.thumbnails = data;
       }))
       .then(action(() => { this.isLoading = false; }));
