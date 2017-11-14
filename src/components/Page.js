@@ -16,11 +16,11 @@ class Page extends Component {
   }
 
   get chapterNumber() {
-    return  this.props.match.params.chapterNumber;
+    return this.props.match.params.chapterNumber;
   }
 
   get pageNumber() {
-    return  this.props.match.params.pageNumber;
+    return this.props.match.params.pageNumber;
   }
 
   componentWillMount() {

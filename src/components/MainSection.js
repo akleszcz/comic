@@ -15,6 +15,7 @@ class MainSection extends Component {
           <h1>Welcome</h1>
         )}/>
         <Route exact path="/volumes/:volumeNumber/chapters/:chapterNumber" component = { Chapter }/>
+        {/*<Route exact path="/volumes/:volumeNumber/chapters/:chapterNumber/pages/" component = { Page }/>*/}
         <Route path="/volumes/:volumeNumber/chapters/:chapterNumber/pages/:pageNumber" component = { Page }/>
       </section>
     );
