@@ -32,11 +32,11 @@ class Page extends Component {
 
   render() {
     const url = this.props.pageStore.url;
-    const {number, previousPageId, nextPageId, numberOfPages, firstPageId, lastPageId} = this.props.pageStore;
+    //const {number, previousPageId, nextPageId, numberOfPages, firstPageId, lastPageId} = this.props.pageStore;
     return (
       <div className="page-container">
         <img src={url} alt={`Page missing`}/>
-        <PageNavigation numberOfPages={numberOfPages} pageNumber={number} previousPageId={previousPageId} nextPageId={nextPageId} firstPageId={firstPageId} lastPageId={lastPageId}/>
+        <PageNavigation/>
       </div>
     );
   }

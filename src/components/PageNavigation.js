@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import '../css/PageNumberSelect.css';
 import { Link } from 'react-router-dom';
 //import { withRouter } from 'react-router';
+import { inject, observer } from 'mobx-react';
 
 
+@inject('pageStore')
+@observer
 class PageNavigation extends Component {
   /*constructor(props, context) {
       super(props, context);
@@ -27,22 +30,23 @@ class PageNavigation extends Component {
   }*/
 
   render() {
+    const {numberOfPages, number, previousPageId, nextPageId, firstPageId, lastPageId} = this.props.pageStore;
     const firstAndPreviousClass = this.forwardMoveEnabled ? "" : " disabled";//if first page, disable first two controls
     const nextAndLastClass = this.backwardMoveEnabled ? "" : " disabled";//if last page, disable last two controls
     //const previousPageNumber = Math.max(parseInt(this.props.pageNumber, 10) - 1, 1);
     //const nextPageNumber = Math.min(parseInt(this.props.pageNumber, 10) + 1, this.props.numberOfPages);
     return (
       <div className="container">
-        <Link className={"first" + firstAndPreviousClass} to={{  pathname: `${this._basePath}/${this.props.firstPageId}`,  state: { numberOfPages: this.props.numberOfPages, id: this.props.firstPageId }}}>
+        <Link className={"first" + firstAndPreviousClass} to={{  pathname: `${this._basePath}/${firstPageId}`,  state: { numberOfPages: numberOfPages, id: firstPageId }}}>
         </Link>
-        <Link className={"previous" + firstAndPreviousClass} to={{  pathname: `${this._basePath}/${this.props.previousPageId}`,  state: { numberOfPages: this.props.numberOfPages, id: this.props.previousPageId }}}/>
+        <Link className={"previous" + firstAndPreviousClass} to={{  pathname: `${this._basePath}/${previousPageId}`,  state: { numberOfPages: numberOfPages, id: previousPageId }}}/>
         <span>
-          <input type="number" min="1" max={this.props.numberOfPages} value={this.props.pageNumber} readOnly></input>/{this.props.numberOfPages}
+          <input type="number" min="1" max={numberOfPages} value={number} readOnly></input>/{numberOfPages}
         </span>
-        <Link className={"next" + nextAndLastClass} to={{  pathname: `${this._basePath}/${this.props.nextPageId}`,
-        state: { numberOfPages: this.props.numberOfPages, id: this.props.nextPageId }}}/>
-        <Link className={"last" + nextAndLastClass} to={{  pathname: `${this._basePath}/${this.props.numberOfPages}`,
-        state: { numberOfPages: this.props.numberOfPages, id: this.props.lastPageId }}}/>
+        <Link className={"next" + nextAndLastClass} to={{  pathname: `${this._basePath}/${nextPageId}`,
+        state: { numberOfPages: numberOfPages, id: nextPageId }}}/>
+        <Link className={"last" + nextAndLastClass} to={{  pathname: `${this._basePath}/${numberOfPages}`,
+        state: { numberOfPages: numberOfPages, id: lastPageId }}}/>
       </div>
     );
   }
