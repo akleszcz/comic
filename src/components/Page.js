@@ -11,16 +11,8 @@ class Page extends Component {
     this.initiateStore = this.initiateStore.bind(this);
   }
 
-  get volumeNumber() {
-    return this.props.match.params.volumeNumber;
-  }
-
-  get chapterNumber() {
-    return this.props.match.params.chapterNumber;
-  }
-
-  get pageNumber() {
-    return this.props.match.params.pageNumber;
+  get id() {
+    return this.props.match.params.id;
   }
 
   componentWillMount() {
@@ -28,27 +20,23 @@ class Page extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!(prevProps.match.params.volumeNumber === this.volumeNumber &&
-      prevProps.match.params.chapterNumber === this.chapterNumber &&
-      prevProps.match.params.pageNumber === this.pageNumber)) {
+    if (!(prevProps.match.params.id === this.id)) {
         this.initiateStore();
       }
   }
 
   initiateStore() {
-    this.props.pageStore.setVolumeNumber(this.volumeNumber);
-    this.props.pageStore.setChapterNumber(this.chapterNumber);
-    this.props.pageStore.setPageNumber(this.pageNumber);
+    this.props.pageStore.setId(this.id);
     this.props.pageStore.loadPage();
   }
 
   render() {
     const url = this.props.pageStore.url;
-    const numberOfPages = this.props.pageStore.numberOfPages;
+    const {number, previousPageId, nextPageId, numberOfPages, firstPageId, lastPageId} = this.props.pageStore;
     return (
       <div className="page-container">
-        <img src={url} alt={`Page ${this.pageNumber}`}/>
-        <PageNavigation numberOfPages={numberOfPages} pageNumber={this.pageNumber} chapterNumber={this.chapterNumber} volumeNumber={this.volumeNumber}/>
+        <img src={url} alt={`Page missing`}/>
+        <PageNavigation numberOfPages={numberOfPages} pageNumber={number} previousPageId={previousPageId} nextPageId={nextPageId} firstPageId={firstPageId} lastPageId={lastPageId}/>
       </div>
     );
   }

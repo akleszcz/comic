@@ -3,29 +3,29 @@ import agent from '../agent';
 
 class PageStore {
   @observable url;
-  @observable volumeNumber;
-  @observable chapterNumber;
-  @observable pageNumber;
+  @observable id;
+  @observable number;
+  @observable previousPageId;
+  @observable nextPageId;
+  @observable firstPageId;
+  @observable lastPageId;
   @observable numberOfPages;
 
-  @action setVolumeNumber(volumeNumber) {
-    this.volumeNumber = volumeNumber;
-  }
-
-  @action setChapterNumber(chapterNumber) {
-    this.chapterNumber = chapterNumber;
-  }
-
-  @action setPageNumber(pageNumber) {
-    this.pageNumber = pageNumber;
+  @action setId(id) {
+    this.id = id;
   }
 
   @action loadPage() {
     this.isLoading = true;
-    agent.Pages.byNumber(this.volumeNumber, this.chapterNumber, this.pageNumber)
-    .then(action(({url, numberOfPages}) => {
+    agent.Pages.byId(this.id)
+    .then(action(({url, number, number_of_pages, previous_page_id, next_page_id, first_page_id, last_page_id}) => {
       this.url = url;
-      this.numberOfPages = numberOfPages;
+      this.number = number;
+      this.numberOfPages = number_of_pages;
+      this.previousPageId = previous_page_id;
+      this.nextPageId = next_page_id;
+      this.firstPageId = first_page_id;
+      this.lastPageId = last_page_id;
     }))
     .then(action(() => { this.isLoading = false; }));
   }

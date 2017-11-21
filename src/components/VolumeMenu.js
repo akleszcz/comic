@@ -12,10 +12,10 @@ class VolumeMenu extends Component {
     }
   }
 
-  createChapterItem(chapter) {
-    return <li key={chapter.number}>
-      <Link to={{  pathname: `/volumes/${this.props.volumeDetails.number}/chapters/${chapter.number}`}}>
-        Chapter {chapter.number}: {chapter.title}
+  createChapterItem(chapter, index) {
+    return <li key={index}>
+      <Link to={{  pathname: `/chapters/${chapter.id}`}}>
+        Chapter {index + 1}: {chapter.title}
       </Link>
     </li>
   }
@@ -25,13 +25,13 @@ class VolumeMenu extends Component {
   }
 
   render() {
-    const { volumeDetails } = this.props;
+    const { volumeDetails, volumeNumber } = this.props;
     const chapters = volumeDetails.chapters;
     const chapterItems = chapters.map(this.createChapterItem);
     return (
       <section className="volume-menu">
         <h2 onClick={() => this.toggleChaptersVisibility()}>
-          Volume {volumeDetails.number}: {volumeDetails.title}
+          Volume {volumeNumber}: {volumeDetails.title}
         </h2>
         <ul>
           {

@@ -22,7 +22,7 @@ class VolumesStore {
     agent.Volumes.all()
       .then(action((data)  => {
         this.volumesMap.clear();
-        data.forEach(volume => this.volumesMap.set(volume.number, volume));
+        data.forEach(volume => this.volumesMap.set(volume.id, volume));//(volume.number, volume));
       }))
       .then(action(() => { this.isLoading = false; }));;
       //.then(action(() => { this.isLoading = false; }));

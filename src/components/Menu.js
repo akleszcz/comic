@@ -17,8 +17,8 @@ class Menu extends Component {
     this.props.volumesStore.loadVolumes();
   }
 
-  createVolumeItem(volume) {
-    return <VolumeMenu key={volume.number} volumeDetails={volume}/>
+  createVolumeItem(volume, index) {
+    return <VolumeMenu key={volume.id} volumeDetails={volume} volumeNumber={index + 1}/>
   }
 
   render() {

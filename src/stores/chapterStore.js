@@ -4,17 +4,14 @@ import agent from '../agent';
 class ChapterStore {
   //@observable number;
   //@observable title;
-  @observable volumeNumber;
-  @observable chapterNumber;
+  //@observable volumeNumber;
+  //@observable chapterNumber;
+  @observable id;
   @observable isLoading = false;
   @observable thumbnails = [];
 
-  @action setVolumeNumber(volumeNumber) {
-    this.volumeNumber = volumeNumber;
-  }
-
-  @action setChapterNumber(chapterNumber) {
-    this.chapterNumber = chapterNumber;
+  @action setId(id) {
+    this.id = id;
   }
 
   @computed get numberOfPages() {
@@ -23,9 +20,9 @@ class ChapterStore {
 
   @action loadThumbnails() {
     this.isLoading = true;
-    agent.Chapters.byNumber(this.volumeNumber, this.chapterNumber)
+    agent.Chapters.byId(this.id)
       .then(action((data) => {
-        this.thumbnails = data;
+        this.thumbnails = data.thumbnails;
       }))
       .then(action(() => { this.isLoading = false; }));
     }

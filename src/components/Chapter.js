@@ -16,34 +16,28 @@ class Chapter extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!(prevProps.match.params.volumeNumber === this.volumeNumber &&
-      prevProps.match.params.chapterNumber === this.chapterNumber)) {
+    if (!(prevProps.match.params.id === this.id)) {
         this.initiateStore();
       }
   }
 
   initiateStore() {
-    this.props.chapterStore.setVolumeNumber(this.volumeNumber);
-    this.props.chapterStore.setChapterNumber(this.chapterNumber);
+    this.props.chapterStore.setId(this.id);
     this.props.chapterStore.loadThumbnails();
   }
 
-  get volumeNumber() {
-    return this.props.match.params.volumeNumber;
+  get id() {
+    return  this.props.match.params.id;
   }
 
-  get chapterNumber() {
-    return  this.props.match.params.chapterNumber;
-  }
-
-  createPageThumbnail(thumbnailUrl, index) {
+  createPageThumbnail(thumbnail, index) {
     const pageNumber = index + 1;
     //const img = require(thumbnailUrl);
     const key = `${this.volumeNumber}-${this.chapterNumber}-${pageNumber}`;
-    const pagePath = `/volumes/${this.volumeNumber}/chapters/${this.chapterNumber}/pages/${pageNumber}`;
+    const pagePath = `/pages/${thumbnail.id}`;
     return (
       <Link key={key} className="cell" to={{  pathname: pagePath }}>
-        <img src={thumbnailUrl} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
+        <img src={thumbnail.url} alt={`Page ${pageNumber}`} className="page-thumbnail"/>
       </Link>
     );
   }

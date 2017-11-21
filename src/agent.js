@@ -23,20 +23,18 @@ const requests = {
 const Volumes = {
   all: () =>
     requests.get(`/volumes`),
-  byNumber: (number) =>
-    requests.get(`/volumes/${number}`)
+  byId: id =>
+    requests.get(`/volumes/${id}`)
 };
 
 const Chapters = {
-  byNumber: (volumeNumber, number) =>
-    requests.get(`/volumes/${volumeNumber}/chapters/${number}`),
-  forVolume: (volumeNumber) =>
-    requests.get(`/volumes/${volumeNumber}/chapters`)
+  byId: id =>
+    requests.get(`/chapters/${id}`)
 };
 
 const Pages = {
-  byNumber: (volumeNumber, chapterNumber, number) =>
-    requests.get(`/volumes/${volumeNumber}/chapters/${chapterNumber}/pages/${number}`)
+  byId: id =>
+    requests.get(`/pages/${id}`)
 };
 
 export default {
