@@ -26,17 +26,15 @@ class Page extends Component {
   }
 
   initiateStore() {
-    this.props.pageStore.setId(this.id);
-    this.props.pageStore.loadPage();
+    this.props.pageStore.loadPage(this.id, { acceptCached: true });
   }
 
   render() {
-    const url = this.props.pageStore.url;
-    //const {number, previousPageId, nextPageId, numberOfPages, firstPageId, lastPageId} = this.props.pageStore;
+    const url = this.props.pageStore.currentPage.url;
     return (
       <div className="page-container">
         <img src={url} alt={`Page missing`}/>
-        <PageNavigation/>
+        <PageNavigation id={this.id}/>
       </div>
     );
   }

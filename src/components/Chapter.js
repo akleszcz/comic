@@ -16,14 +16,13 @@ class Chapter extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!(prevProps.match.params.id === this.id)) {
+    //if (!(prevProps.match.params.id === this.id)) {
         this.initiateStore();
-      }
+      //}
   }
 
   initiateStore() {
-    this.props.chapterStore.setId(this.id);
-    this.props.chapterStore.loadThumbnails();
+    this.props.chapterStore.loadChapter(this.id, { acceptCached: true });
   }
 
   get id() {
@@ -33,7 +32,7 @@ class Chapter extends Component {
   createPageThumbnail(thumbnail, index) {
     const pageNumber = index + 1;
     //const img = require(thumbnailUrl);
-    const key = `${this.volumeNumber}-${this.chapterNumber}-${pageNumber}`;
+    const key = `${pageNumber}`;
     const pagePath = `/pages/${thumbnail.id}`;
     return (
       <Link key={key} className="cell" to={{  pathname: pagePath }}>
@@ -43,7 +42,7 @@ class Chapter extends Component {
   }
 
   render() {
-    const pageThumbnails = this.props.chapterStore.thumbnails.map(this.createPageThumbnail);;
+    const pageThumbnails = this.props.chapterStore.currentChapter.thumbnails.map(this.createPageThumbnail);;
     return (
       <div className="chapter-container">
         <div className="pages-grid">
