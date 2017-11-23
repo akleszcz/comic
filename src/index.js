@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import volumesStore from './stores/volumesStore';
 import chapterStore from './stores/chapterStore';
 import pageStore from './stores/pageStore';
+import uiStateStore from './stores/uiStateStore';
 import { useStrict } from 'mobx';
 import { Provider } from 'mobx-react';
 
@@ -14,7 +15,8 @@ useStrict(true);
 const stores = {
   volumesStore,
   chapterStore,
-  pageStore
+  pageStore,
+  uiStateStore
 };
 
 ReactDOM.render(

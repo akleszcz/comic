@@ -1,8 +1,9 @@
 .app {
   display: grid;
   grid-template-columns: 2fr 5fr;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 30px 60px 1fr;
   grid-template-areas:
+    "navigation-bar navigation-bar"
     "header header"
     "menu main-section";
   height: 100vh;

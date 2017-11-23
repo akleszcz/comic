@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Menu from './Menu';
+import NavigationBar from './NavigationBar';
 import MainSection from './MainSection';
+import Login from './Login';
+import Modal from 'react-modal';
 import '../css/App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 
+@inject('uiStateStore')
+@observer
 class App extends Component {
+
   render() {
     return (
-      <Router>
-      <div className="app">
-        <Header/>
-        <Menu/>
-        <MainSection/>
+      <div>
+        <Modal
+          isOpen={this.props.uiStateStore.isLoginModalOpen}
+          contentLabel="Example Modal">
+            <Login/>
+            <button onClick={() => this.props.uiStateStore.closeLoginModal()}>close</button>
+        </Modal>
+
+        <div className="app">
+          <NavigationBar/>
+          <Header/>
+          <Menu/>
+          <MainSection/>
+        </div>
       </div>
-      </Router>
     );
   }
 }

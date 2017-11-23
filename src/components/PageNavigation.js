@@ -22,6 +22,7 @@ class PageNavigation extends Component {
 
   render() {
     let {id, numberOfPages, number, previousPageId, nextPageId, firstPageId, lastPageId} = this.props.pageStore.currentPage;
+    //const {isLoading} = this.props.pageStore;
     const firstAndPreviousClass = this.forwardMoveEnabled ? "" : " disabled";//if first page, disable first two controls
     const nextAndLastClass = this.backwardMoveEnabled ? "" : " disabled";//if last page, disable last two controls
     if (previousPageId === null) {
