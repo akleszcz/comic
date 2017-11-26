@@ -17,6 +17,12 @@ const requests = {
     superagent
       .get(`${API_ROOT}${url}`)
       .end(handleErrors)
+      .then(responseBody),
+  post: (url, body) =>
+    superagent
+      .post(`${API_ROOT}${url}`, body)
+      //.use(tokenPlugin)
+      .end(handleErrors)
       .then(responseBody)
 };
 
@@ -37,8 +43,14 @@ const Pages = {
     requests.get(`/pages/${id}`)
 };
 
+const User = {
+  login: (login, password) =>
+    requests.post(`/users/login`, { login, password }),
+};
+
 export default {
   Volumes,
   Chapters,
-  Pages
+  Pages,
+  User
 };

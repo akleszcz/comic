@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import '../css/VolumeMenu.css';
 import { Link } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 
+@inject('userStore')
+@observer
 class VolumeMenu extends Component {
   constructor(props, context) {
     super(props, context);
@@ -13,10 +16,15 @@ class VolumeMenu extends Component {
   }
 
   createChapterItem(chapter, index) {
+    let removeButton = null;
+    if (this.props.userStore.currentUser.admin) {
+      removeButton = <button>x</button>;
+    }
     return <li key={index}>
       <Link to={{  pathname: `/chapters/${chapter.id}`}}>
         Chapter {index + 1}: {chapter.title}
       </Link>
+      {removeButton}
     </li>
   }
 

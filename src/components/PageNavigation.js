@@ -21,7 +21,7 @@ class PageNavigation extends Component {
   }
 
   render() {
-    let {id, numberOfPages, number, previousPageId, nextPageId, firstPageId, lastPageId} = this.props.pageStore.currentPage;
+    let {id, numberOfPages, number, chapterId, previousPageId, nextPageId, firstPageId, lastPageId} = this.props.pageStore.currentPage;
     //const {isLoading} = this.props.pageStore;
     const firstAndPreviousClass = this.forwardMoveEnabled ? "" : " disabled";//if first page, disable first two controls
     const nextAndLastClass = this.backwardMoveEnabled ? "" : " disabled";//if last page, disable last two controls
@@ -39,8 +39,9 @@ class PageNavigation extends Component {
         <span>
           <input type="number" min="1" max={numberOfPages} value={number} readOnly></input>/{numberOfPages}
         </span>
-        <Link className={"next" + nextAndLastClass} to={{  pathname: `${this._basePath}/${nextPageId}`}}/>
-        <Link className={"last" + nextAndLastClass} to={{  pathname: `${this._basePath}/${lastPageId}`}}/>
+        <Link className={"next" + nextAndLastClass} to= {`${this._basePath}/${nextPageId}`}/>
+        <Link className={"last" + nextAndLastClass} to={`${this._basePath}/${lastPageId}`}/>
+        <Link to={`/chapters/${chapterId}`}>Go Back to all pages</Link>
       </div>
     );
   }

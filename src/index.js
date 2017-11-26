@@ -7,6 +7,9 @@ import volumesStore from './stores/volumesStore';
 import chapterStore from './stores/chapterStore';
 import pageStore from './stores/pageStore';
 import uiStateStore from './stores/uiStateStore';
+import userStore from './stores/userStore';
+import authenticationStore from './stores/authenticationStore';
+import commonStore from './stores/commonStore';
 import { useStrict } from 'mobx';
 import { Provider } from 'mobx-react';
 
@@ -16,7 +19,10 @@ const stores = {
   volumesStore,
   chapterStore,
   pageStore,
-  uiStateStore
+  uiStateStore,
+  userStore,
+  authenticationStore,
+  commonStore
 };
 
 ReactDOM.render(
