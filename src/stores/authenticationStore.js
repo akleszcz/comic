@@ -29,10 +29,10 @@ class AuthenticationStore {
     this.inProgress = true;
     this.errors = undefined;
     return agent.User.login(this.values.login, this.values.password)
-      .then(({ login, admin, token }) => {
+      .then(({ token }) => {
         commonStore.setToken(token);
-        userStore.setUser(login, admin);
       })
+      .then(() => userStore.setUser())
       .then(action(() => { this.inProgress = false; }))
       .catch(action((err) => {
         this.errors = err.response && err.response.body && err.response.body.errors;

@@ -10,7 +10,7 @@ class MainSection extends Component {
     //const numberOfChaptersPages = this.props.location.state.numberOfPages;
     //const {numberOfChaptersPages } = this.props.location.state;
     return (
-      <section className="main-section">
+      <main className="main-section">
         <Route exact path="/" render = {() => (
           <h1>Welcome</h1>
         )}/>
@@ -19,7 +19,7 @@ class MainSection extends Component {
         {/*<Route exact path="/volumes/:volumeNumber/chapters/:chapterNumber" component = { Chapter }/>/*}
         {/*<Route exact path="/volumes/:volumeNumber/chapters/:chapterNumber/pages/" component = { Page }/>*/}
         {/*<Route path="/volumes/:volumeNumber/chapters/:chapterNumber/pages/:pageNumber" component = { Page }/>*/}
-      </section>
+      </main>
     );
   }
 }

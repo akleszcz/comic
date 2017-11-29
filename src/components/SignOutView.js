@@ -1,0 +1,29 @@
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+
+@inject('userStore')
+@inject('authenticationStore')
+@observer
+class SignOutView extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.signOut = this.signOut.bind(this);
+  }
+
+  signOut() {
+    this.props.authenticationStore.logout();
+  }
+
+  render() {
+    if (this.props.userStore.currentUser.login) {
+      return (
+        <span onClick={this.signOut}>
+            Sign out
+        </span>
+      );
+    }
+    return null;
+  }
+}
+
+export default SignOutView;

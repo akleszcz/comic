@@ -1,8 +1,9 @@
 import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
+import commonStore from './stores/commonStore';
 
 const superagent = superagentPromise(_superagent, global.Promise);
-const API_ROOT = 'http://comic-rest.azurewebsites.net/api';//'http://localhost:3001/api';
+const API_ROOT = 'http://comic-rest.azurewebsites.net/api';//'http://localhost:3000/api';//
 const responseBody = res => res.body;
 
 const handleErrors = err => {
@@ -12,10 +13,22 @@ const handleErrors = err => {
   return err;
 };
 
+const tokenPlugin = req => {
+  if (commonStore.token) {
+    req.set('token', `${commonStore.token}`);
+  }
+};
+
 const requests = {
   get: url =>
     superagent
       .get(`${API_ROOT}${url}`)
+      .end(handleErrors)
+      .then(responseBody),
+  getByToken: url =>
+    superagent
+      .get(`${API_ROOT}${url}`)
+      .use(tokenPlugin)
       .end(handleErrors)
       .then(responseBody),
   post: (url, body) =>
@@ -46,6 +59,8 @@ const Pages = {
 const User = {
   login: (login, password) =>
     requests.post(`/users/login`, { login, password }),
+  byToken: () =>
+    requests.getByToken('/user')
 };
 
 export default {

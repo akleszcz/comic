@@ -3,7 +3,7 @@ import { observable, action, reaction } from 'mobx';
 class CommonStore {
 
   @observable appName = 'Conduit';
-  @observable token = window.localStorage.getItem('jwt');
+  @observable token = window.localStorage.getItem('token');
 
   constructor() {
     reaction(

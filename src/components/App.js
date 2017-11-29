@@ -9,8 +9,16 @@ import '../css/App.css';
 import { inject, observer } from 'mobx-react';
 
 @inject('uiStateStore')
+@inject('commonStore')
+@inject('userStore')
 @observer
 class App extends Component {
+
+  componentDidMount() {
+    if (this.props.commonStore.token) {
+      this.props.userStore.setUser();
+      }
+    }
 
   render() {
     return (
