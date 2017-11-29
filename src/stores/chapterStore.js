@@ -1,5 +1,6 @@
 import { observable, action, computed } from 'mobx';
 import agent from '../agent';
+import volumesStore from './volumesStore';
 
 class ChapterStore {
   @observable isLoading = false;
@@ -29,6 +30,7 @@ class ChapterStore {
     }
     return 0;
   }
+
   @action loadChapter(id, { acceptCached = false } = {}) {
     if (!id) {
       return Promise.resolve(this.currentChapter);
@@ -42,6 +44,13 @@ class ChapterStore {
         this.currentChapter = chapter;
       }))
       .then(action(() => { this.isLoading = false; }));
+    }
+
+    @action createChapter(title, position, volumeId) {
+      return agent.Chapters.create(title, position, volumeId)
+        .then(({ chapter }) => {
+          volumesStore.addChapter({title: chapter.title, position: chapter.position, chapterId: chapter.id, volumeId: chapter.volume_id})
+        })
     }
   }
 

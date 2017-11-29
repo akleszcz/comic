@@ -17,6 +17,20 @@ class VolumesStore {
     return this.volumesMap.values();
   };
 
+  @action addChapter({title, position, chapterId, volumeId}) {
+    const currentVolume = this.volumesMap.get(volumeId);
+    let newChaptersList = currentVolume.chapters;
+    newChaptersList.splice(position, 0, { title: title, id: chapterId });
+    this.volumesMap.delete(volumeId);
+    this.volumesMap.set(volumeId, {
+      id: volumeId,
+      title: currentVolume.title,
+      order_number: currentVolume.order_number,
+      chapters: newChaptersList
+    });
+    //this.volumesMap.get(volumeId).chapters.splice({ title: title, id: chapterId }, 0, position);
+  }
+
   @action loadVolumes() {
     this.isLoading = true;
     agent.Volumes.all()

@@ -23,18 +23,19 @@ const requests = {
   get: url =>
     superagent
       .get(`${API_ROOT}${url}`)
+      .use(tokenPlugin)
       .end(handleErrors)
       .then(responseBody),
-  getByToken: url =>
+  /*getByToken: url =>
     superagent
       .get(`${API_ROOT}${url}`)
       .use(tokenPlugin)
       .end(handleErrors)
-      .then(responseBody),
+      .then(responseBody),*/
   post: (url, body) =>
     superagent
       .post(`${API_ROOT}${url}`, body)
-      //.use(tokenPlugin)
+      .use(tokenPlugin)
       .end(handleErrors)
       .then(responseBody)
 };
@@ -48,7 +49,9 @@ const Volumes = {
 
 const Chapters = {
   byId: id =>
-    requests.get(`/chapters/${id}`)
+    requests.get(`/chapters/${id}`),
+  create: (title, position, volume_id) =>
+    requests.post(`/chapters/`, { title, position, volume_id })
 };
 
 const Pages = {
@@ -60,7 +63,7 @@ const User = {
   login: (login, password) =>
     requests.post(`/users/login`, { login, password }),
   byToken: () =>
-    requests.getByToken('/user')
+    requests.get('/user')
 };
 
 export default {
