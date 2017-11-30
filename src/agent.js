@@ -20,6 +20,12 @@ const tokenPlugin = req => {
 };
 
 const requests = {
+  delete: (url, body) =>
+    superagent
+      .del(`${API_ROOT}${url}`, body)
+      .use(tokenPlugin)
+      .end(handleErrors)
+      .then(responseBody),
   get: url =>
     superagent
       .get(`${API_ROOT}${url}`)
@@ -51,7 +57,9 @@ const Chapters = {
   byId: id =>
     requests.get(`/chapters/${id}`),
   create: (title, position, volume_id) =>
-    requests.post(`/chapters/`, { title, position, volume_id })
+    requests.post(`/chapters/`, { title, position, volume_id }),
+  delete: (chapter_id, volume_id) =>
+    requests.delete(`/volumes/${volume_id}/chapters/${chapter_id}`)
 };
 
 const Pages = {

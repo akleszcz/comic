@@ -52,6 +52,18 @@ class ChapterStore {
           volumesStore.addChapter({title: chapter.title, position: chapter.position, chapterId: chapter.id, volumeId: chapter.volume_id})
         })
     }
+
+    @action deleteChapter(chapterId, volumeId) {
+      return agent.Chapters.delete(chapterId, volumeId)
+        .then((result) => {
+          if (result && result.success) {
+            volumesStore.deleteChapter({chapterId, volumeId})
+          }
+          else {
+            alert("Something went wrong");
+          }
+        })
+    }
   }
 
 export default new ChapterStore();
