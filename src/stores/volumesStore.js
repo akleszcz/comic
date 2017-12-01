@@ -1,7 +1,7 @@
 import { observable, action, computed } from 'mobx';
 import agent from '../agent';
 
-class VolumesStore {
+export class VolumesStore {
   @observable volumesMap = [];//observable.map();
   @observable isLoading = false;
 

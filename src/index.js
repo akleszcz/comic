@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import './css/reset.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import volumesStore from './stores/volumesStore';
 import chapterStore from './stores/chapterStore';
 import pageStore from './stores/pageStore';
@@ -27,9 +27,9 @@ const stores = {
 
 ReactDOM.render(
   <Provider {...stores}>
-      <BrowserRouter>
+      <Router>
         <Route path="/" component={App}/>
-      </BrowserRouter>
+      </Router>
     </Provider>,
     document.getElementById('root')
 );
