@@ -3,7 +3,7 @@ import _superagent from 'superagent';
 import commonStore from './stores/commonStore';
 
 const superagent = superagentPromise(_superagent, global.Promise);
-const API_ROOT = 'http://comic-rest.azurewebsites.net/api';//'http://localhost:3000/api';//
+const API_ROOT = 'https://comic-rest.azurewebsites.net/api';//'http://localhost:3000/api';//
 const responseBody = res => res.body;
 
 const handleErrors = err => {
