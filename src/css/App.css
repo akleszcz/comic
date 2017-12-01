@@ -1,14 +1,25 @@
 .app {
   display: grid;
-  grid-template-columns: 2fr 5fr;
-  grid-template-rows: 30px 60px auto;
+  grid-template-rows: 30px 60px auto auto;
   grid-template-areas:
-    "navigation-bar navigation-bar"
-    "header header"
-    "menu main-section";
+    "navigation-bar"
+    "header"
+    "menu"
+    "main-section";
   height: 100vh;
 }
 
 .app * {
   color: #2e2e2e;
+}
+
+@media (min-width: 320px) {
+  .app {
+    grid-template-columns: 2fr 5fr;
+    grid-template-rows: 30px 60px auto;
+    grid-template-areas:
+      "navigation-bar navigation-bar"
+      "header header"
+      "menu main-section";
+  }
 }
