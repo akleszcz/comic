@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 
-class UiStateStore {
+export class UiStateStore {
     @observable isLoginModalOpen = false;
     @observable isMenuVisible = true;
 
