@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import '../css/Header.css';
+import { inject } from 'mobx-react';
 
+@inject('uiStateStore')
 class Header extends Component {
   render() {
     return (
       <header className="header">
-        <span className="hamburger-menu"></span>
+        <span className="hamburger-menu" onClick={() => this.props.uiStateStore.toggleMenuVisibility()}></span>
         <h1>Title</h1>
       </header>
     );

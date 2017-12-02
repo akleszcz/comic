@@ -5,6 +5,8 @@ import '../css/Menu.css';
 import { inject, observer } from 'mobx-react';
 
 @inject('volumesStore')
+@inject('userStore')
+@inject('uiStateStore')
 @observer
 class Menu extends Component {
   constructor(props, context) {
@@ -22,12 +24,15 @@ class Menu extends Component {
   }
 
   render() {
-    const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
-    return (
-      <nav className="menu">
-        {volumeItems}
-      </nav>
-    );
+    if (this.props.uiStateStore.isMenuVisible) {
+      const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
+      return (
+        <nav className="menu">
+          {volumeItems}
+        </nav>
+      );
+    }
+    return null;
   }
 }
 
