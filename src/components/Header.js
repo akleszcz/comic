@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/Header.css';
 import { inject } from 'mobx-react';
+import FaBeer from './FaBeer';
 
 @inject('uiStateStore')
 class Header extends Component {
@@ -8,7 +9,7 @@ class Header extends Component {
     return (
       <header className="header">
         <span className="hamburger-menu" onClick={() => this.props.uiStateStore.toggleMenuVisibility()}></span>
-        <h1>Title</h1>
+        <h1>Title <FaBeer/></h1>
       </header>
     );
   }

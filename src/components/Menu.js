@@ -33,7 +33,7 @@ class Menu extends Component {
           if (matches || isMenuVisible) {
             return <nav className="menu">{volumeItems}</nav>;
           }
-          else { return null; }
+          return null;
         }}
       </MediaQuery>
     );
