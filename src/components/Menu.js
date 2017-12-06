@@ -3,6 +3,7 @@ import VolumeMenu from './VolumeMenu';
 import '../css/Menu.css';
 //import volumeStore from '../stores/VolumeStore';
 import { inject, observer } from 'mobx-react';
+import MediaQuery from 'react-responsive';
 
 @inject('volumesStore')
 @inject('userStore')
@@ -24,15 +25,18 @@ class Menu extends Component {
   }
 
   render() {
-    if (this.props.uiStateStore.isMenuVisible) {
-      const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
-      return (
-        <nav className="menu">
-          {volumeItems}
-        </nav>
-      );
-    }
-    return null;
+    const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
+    const isMenuVisible = this.props.uiStateStore.isMenuVisible;
+    return (
+      <MediaQuery minWidth={320}>
+        {(matches) => {
+          if (matches || isMenuVisible) {
+            return <nav className="menu">{volumeItems}</nav>;
+          }
+          else { return null; }
+        }}
+      </MediaQuery>
+    );
   }
 }
 

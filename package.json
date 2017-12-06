@@ -37,6 +37,7 @@
     "react-dev-utils": "^4.1.0",
     "react-dom": "^16.0.0",
     "react-fontawesome": "^1.6.1",
+    "react-responsive": "^4.0.3",
     "react-router-dom": "^4.2.2",
     "rename-keys": "^2.0.1",
     "style-loader": "0.18.2",
