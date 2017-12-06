@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../css/Header.css';
 import { inject } from 'mobx-react';
-import FaBeer from './FaBeer';
+import Delete from './icons/Delete';
+import Add from './icons/Add';
 
 @inject('uiStateStore')
 class Header extends Component {
@@ -9,7 +10,7 @@ class Header extends Component {
     return (
       <header className="header">
         <span className="hamburger-menu" onClick={() => this.props.uiStateStore.toggleMenuVisibility()}></span>
-        <h1>Title <FaBeer/></h1>
+        <h1>Title <Delete/><Add/></h1>
       </header>
     );
   }
