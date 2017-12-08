@@ -29,7 +29,6 @@ class App extends Component {
             <Login/>
             <button onClick={() => this.props.uiStateStore.closeLoginModal()}>close</button>
         </Modal>
-
         <div className="app">
           <NavigationBar/>
           <Header/>

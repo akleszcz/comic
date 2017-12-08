@@ -2,6 +2,31 @@ import React, { Component } from 'react';
 import '../css/Page.css';
 import PageNavigation from './PageNavigation';
 import { inject, observer } from 'mobx-react';
+import LoadingSpinner from './LoadingSpinner';
+
+const PageImage = ({isLoading, url}) => {
+  if (isLoading) {
+    return (
+      <LoadingSpinner />
+    )
+  }
+  return(
+    <img src={url} alt={`Page missing`}/>
+  )
+}
+
+/*class PageImage extends Component {
+  render() {
+    if (this.props.isLoading) {
+      return (
+        <LoadingSpinner />
+      )
+    }
+    return(
+      <img src={this.props.url} alt={`Page missing`}/>
+    )
+  }
+}*/
 
 @inject('pageStore')
 @observer
@@ -31,9 +56,14 @@ class Page extends Component {
 
   render() {
     const url = this.props.pageStore.currentPage.url;
+    /*if (this.props.pageStore.isLoading) {
+      return (
+        <div className="page-container"><LoadingSpinner /></div>
+      );
+    }*/
     return (
       <div className="page-container">
-        <img src={url} alt={`Page missing`}/>
+        <div className="image-container"><PageImage isLoading={this.props.pageStore.isLoading} url={url}/></div>
         <PageNavigation id={this.id}/>
       </div>
     );

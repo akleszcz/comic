@@ -4,6 +4,7 @@ import '../css/Menu.css';
 //import volumeStore from '../stores/VolumeStore';
 import { inject, observer } from 'mobx-react';
 import MediaQuery from 'react-responsive';
+import LoadingSpinner from './LoadingSpinner';
 
 @inject('volumesStore')
 @inject('userStore')
@@ -27,6 +28,11 @@ class Menu extends Component {
   render() {
     const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
     const isMenuVisible = this.props.uiStateStore.isMenuVisible;
+    if (this.props.volumesStore.isLoading) {
+      return (
+        <nav className="menu"><LoadingSpinner /></nav>
+      );
+    }
     return (
       <MediaQuery minWidth={320}>
         {(matches) => {

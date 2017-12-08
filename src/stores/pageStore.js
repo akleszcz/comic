@@ -35,6 +35,7 @@ class PageStore {
       this.currentPage.previousPageId =  camelCasePage.previousPageId;
       this.currentPage.nextPageId =  camelCasePage.nextPageId;
       this.currentPage.url =  camelCasePage.url;
+      //this.currentPage = camelCasePage;
     }))
     .then(()=>chapterStore.loadChapter(this.currentPage.chapterId, { acceptCached: true }))
     .then(action(() => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/Chapter.css';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import LoadingSpinner from './LoadingSpinner';
 
 @inject('chapterStore')
 @observer
@@ -42,7 +43,12 @@ class Chapter extends Component {
   }
 
   render() {
-    const pageThumbnails = this.props.chapterStore.currentChapter.thumbnails.map(this.createPageThumbnail);;
+    const pageThumbnails = this.props.chapterStore.currentChapter.thumbnails.map(this.createPageThumbnail);
+    if (this.props.chapterStore.isLoading) {
+      return (
+        <div className="chapter-container"><LoadingSpinner /></div>
+      );
+    }
     return (
       <div className="chapter-container">
         <div className="pages-grid">
