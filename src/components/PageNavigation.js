@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/PageNumberSelect.css';
+import '../css/PageNavigation.css';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
@@ -37,11 +37,11 @@ class PageNavigation extends Component {
         </Link>
         <Link className={"previous" + firstAndPreviousClass} to={{  pathname: `${this._basePath}/${previousPageId}`}}/>
         <span>
-          <input type="number" min="1" max={numberOfPages} value={number} readOnly></input>/{numberOfPages}
+          {number}/{numberOfPages}
         </span>
         <Link className={"next" + nextAndLastClass} to= {`${this._basePath}/${nextPageId}`}/>
         <Link className={"last" + nextAndLastClass} to={`${this._basePath}/${lastPageId}`}/>
-        <Link to={`/chapters/${chapterId}`}>Go Back to all pages</Link>
+        <Link className="back-to-all" to={`/chapters/${chapterId}`}/>
       </div>
     );
   }
