@@ -1,11 +1,12 @@
 .page-container {
   display: flex;
   flex-direction: column;
-}
 
-.page-container img {
-  display: block;
-  margin: 1rem auto;
+  img {
+    display: block;
+    margin: 1rem auto;
+  }
+
 }
 
 .image-container {

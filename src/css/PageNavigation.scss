@@ -1,3 +1,5 @@
+$arrow-height: 10px;
+
 .container {
   align-items: center;
   display: flex;
@@ -43,11 +45,11 @@ a:last-child {
 }
 
 .next, .previous {
-  height: 10px;
+  height: $arrow-height;
   width: 10px;
 }
 
 .back-to-all, .first, .last {
-  height: 10px;
+  height: $arrow-height;
   width: 20px;
 }

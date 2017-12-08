@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/PageNavigation.css';
+import '../css/PageNavigation.scss';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 

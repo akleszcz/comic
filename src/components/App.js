@@ -5,7 +5,7 @@ import NavigationBar from './NavigationBar';
 import MainSection from './MainSection';
 import Login from './Login';
 import Modal from 'react-modal';
-import '../css/App.css';
+import '../css/App.scss';
 import { inject, observer } from 'mobx-react';
 
 @inject('uiStateStore')

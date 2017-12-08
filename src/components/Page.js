@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/Page.css';
+import '../css/Page.scss';
 import PageNavigation from './PageNavigation';
 import { inject, observer } from 'mobx-react';
 import LoadingSpinner from './LoadingSpinner';
