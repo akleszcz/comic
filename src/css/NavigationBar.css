@@ -6,5 +6,6 @@
 }
 
 .navigation-bar {
+  background: #606060;
   grid-area: navigation-bar;
 }

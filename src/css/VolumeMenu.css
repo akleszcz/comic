@@ -1,3 +1,18 @@
-.volume-menu ul a {
-  margin-left: 10px;
+.volume-menu {
+  margin-bottom: 1rem;
+}
+
+.volume-menu ul li {
+  margin: .5rem 0 .5rem 1rem;
+  position: relative;
+}
+
+.volume-menu .chapter-title-container,
+.volume-menu .add-chapter-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.volume-menu .add-chapter-container {
+  margin: .2rem 0 .5rem 0;
 }

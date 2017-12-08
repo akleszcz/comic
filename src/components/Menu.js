@@ -34,7 +34,7 @@ class Menu extends Component {
       );
     }
     return (
-      <MediaQuery minWidth={320}>
+      <MediaQuery minWidth={480}>
         {(matches) => {
           if (matches || isMenuVisible) {
             return <nav className="menu">{volumeItems}</nav>;

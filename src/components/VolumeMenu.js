@@ -3,6 +3,7 @@ import '../css/VolumeMenu.css';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import AddChapterView from './AddChapterView';
+import Delete from './icons/Delete';
 
 @inject('userStore')
 @inject('chapterStore')
@@ -21,14 +22,16 @@ class VolumeMenu extends Component {
   createChapterItem(chapter, index) {
     let deleteButton = null, addChapterView = null;
     if (this.props.userStore.currentUser.admin) {
-      deleteButton = <button onClick={() => this.deleteChapter(chapter.id, this.props.volumeDetails.id)}>x</button>;
+      deleteButton = <Delete onClick={() => this.deleteChapter(chapter.id, this.props.volumeDetails.id)}/>;
       addChapterView = <AddChapterView position={index + 1} volumeId={this.props.volumeDetails.id}/>;
     }
     return <li key={index}>
-      <Link to={{  pathname: `/chapters/${chapter.id}`}}>
-        Chapter {index + 1}: {chapter.title}
-      </Link>
-      {deleteButton}
+      <div className="chapter-title-container">
+        <Link to={{  pathname: `/chapters/${chapter.id}`}}>
+          Chapter {index + 1}: {chapter.title}
+        </Link>
+        {deleteButton}
+      </div>
       {addChapterView}
     </li>
   }

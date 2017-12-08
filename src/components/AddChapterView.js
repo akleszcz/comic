@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import Add from './icons/Add';
 
 @inject('chapterStore')
 @observer
@@ -23,9 +24,9 @@ class AddChapterView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="add-chapter-container">
         <input type = "text" onChange={this.handleTitleChange}/>
-        <button onClick={this.addChapter}>+</button>
+        <Add onClick={this.addChapter}/>
       </div>
     );
   }

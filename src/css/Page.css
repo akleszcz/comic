@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
-.page-container .image-container {
-  height: 525px;
+.page-container img {
+  display: block;
+  margin: 1rem auto;
+}
+
+.image-container {
+    height: calc(525px + 2rem);
 }

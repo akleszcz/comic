@@ -1,6 +1,6 @@
 .menu {
-  background: #ddd;
+  background: #373737;
   grid-area: menu;
   /*height: 100vh;*/
-  padding: 10px;
+  padding: 1rem;
 }
