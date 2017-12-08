@@ -1,6 +1,7 @@
 $font-color: #c3c3c3;
 $first-breakpoint: 320px;
 $first-breakpoint-px: $first-breakpoint + 0px;
+$page-navigation-arrow-height: 10px;
 
 :export {
   firstBreakpoint: $first-breakpoint;

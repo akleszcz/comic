@@ -1,4 +1,7 @@
-$arrow-height: 10px;
+@import "_functions.scss";
+@import "_variables.scss";
+
+$arrow-svg-color: url-encode-color($font-color);
 
 .container {
   align-items: center;
@@ -21,35 +24,35 @@ a:last-child {
 }
 
 .disabled {
-  opacity: .5;
+  opacity: .3;
 }
 
 .back-to-all {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2720%27%3E%3Cpolygon%20points%3D%270%2C0%2020%2C0%2010%2C10%27%20style%3D%27fill%3A%232e2e2e%27%2F%3E%3C%2Fsvg%3E%0A");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2720%27%3E%3Cpolygon%20points%3D%270%2C0%2020%2C0%2010%2C10%27%20style%3D%27fill%3A#{$arrow-svg-color}%27%2F%3E%3C%2Fsvg%3E%0A");
 }
 
 .first {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2710%27%3E%3Cpolygon%20points%3D%270%2C5%2010%2C0%2010%2C10%200%2C5%2010%2C5%2020%2C10%2020%2C0%2010%2C5%27%20style%3D%27fill%3A%232e2e2e%27%2F%3E%3C%2Fsvg%3E%0A");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2710%27%3E%3Cpolygon%20points%3D%270%2C5%2010%2C0%2010%2C10%200%2C5%2010%2C5%2020%2C10%2020%2C0%2010%2C5%27%20style%3D%27fill%3A#{$arrow-svg-color}%27%2F%3E%3C%2Fsvg%3E%0A");
 }
 
 .last {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2720%27%3E%3Cpolygon%20points%3D%2710%2C5%200%2C10%200%2C0%2010%2C5%2010%2C10%2020%2C5%2010%2C0%27%20style%3D%27fill%3A%232e2e2e%27%2F%3E%3C%2Fsvg%3E%0A");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2720%27%3E%3Cpolygon%20points%3D%2710%2C5%200%2C10%200%2C0%2010%2C5%2010%2C10%2020%2C5%2010%2C0%27%20style%3D%27fill%3A#{$arrow-svg-color}%27%2F%3E%3C%2Fsvg%3E%0A");
 }
 
 .next {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2710%27%3E%3Cpolygon%20points%3D%270%2C10%200%2C0%2010%2C5%27%20style%3D%27fill%3A%232e2e2e%27%2F%3E%3C%2Fsvg%3E%0A");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2710%27%3E%3Cpolygon%20points%3D%270%2C10%200%2C0%2010%2C5%27%20style%3D%27fill%3A#{$arrow-svg-color}%27%2F%3E%3C%2Fsvg%3E%0A");
 }
 
 .previous {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2710%27%3E%3Cpolygon%20points%3D%270%2C5%2010%2C0%2010%2C10%27%20style%3D%27fill%3A%232e2e2e%27%2F%3E%3C%2Fsvg%3E%0A");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2710%27%20width%3D%2710%27%3E%3Cpolygon%20points%3D%270%2C5%2010%2C0%2010%2C10%27%20style%3D%27fill%3A#{$arrow-svg-color}%27%2F%3E%3C%2Fsvg%3E%0A");
 }
 
 .next, .previous {
-  height: $arrow-height;
+  height: $page-navigation-arrow-height;
   width: 10px;
 }
 
 .back-to-all, .first, .last {
-  height: $arrow-height;
+  height: $page-navigation-arrow-height;
   width: 20px;
 }

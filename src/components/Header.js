@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/Header.css';
+import '../css/Header.scss';
 import { inject } from 'mobx-react';
 
 @inject('uiStateStore')

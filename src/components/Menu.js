@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VolumeMenu from './VolumeMenu';
-import style from '../css/Menu.css';
+import '../css/Menu.css';
 //import volumeStore from '../stores/VolumeStore';
 import { inject, observer } from 'mobx-react';
 import MediaQuery from 'react-responsive';
@@ -26,7 +26,6 @@ class Menu extends Component {
   }
 
   render() {
-    const breakpoint = parseInt(style.firstBreakpoint, 10)
     const volumeItems = this.props.volumesStore.volumes.map(this.createVolumeItem);
     const isMenuVisible = this.props.uiStateStore.isMenuVisible;
     if (this.props.volumesStore.isLoading) {
@@ -35,7 +34,7 @@ class Menu extends Component {
       );
     }
     return (
-      <MediaQuery minWidth={breakpoint}>
+      <MediaQuery minWidth={480}>
         {(matches) => {
           if (matches || isMenuVisible) {
             return <nav className="menu">{volumeItems}</nav>;

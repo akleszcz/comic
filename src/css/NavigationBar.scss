@@ -1,0 +1,16 @@
+.navigation-list {
+  display: flex;
+  padding: 10px;
+
+  li {
+    margin: 3px;
+  }
+}
+
+.navigation-bar {
+  align-items: center;
+  background: #606060;
+  display: flex;
+  grid-area: navigation-bar;
+  justify-content: flex-end;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/NavigationBar.css';
+import '../css/NavigationBar.scss';
 import { Link } from 'react-router-dom';
 import SignInView from './SignInView';
 import SignOutView from './SignOutView';
