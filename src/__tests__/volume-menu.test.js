@@ -6,6 +6,7 @@ import { MemoryRouter as Router, withRouter } from 'react-router-dom';
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
 //import chapterStore from '../stores/chapterStore';
+import jsdom from 'jsdom';
 
 
 import Adapter from "enzyme-adapter-react-16";
@@ -14,6 +15,9 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("VolumeMenu", function() {
   let userStore, chapterStore, volumeDetails, volumeNumber, stores;
+  const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
+  global.document = doc;
+  global.window = doc.defaultView;
   beforeEach(function() {
     userStore = {
       currentUser: {

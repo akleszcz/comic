@@ -22,6 +22,11 @@ describe("VolumesStore", function() {
     store.addChapter({title: "Lynx", position: 1, chapterId: "testid", volumeId: "rkptjCZxG"});
     expect(store.volumesMap[0].chapters.length).toBe(3);
   });
+  it("deletes chapter", function() {
+    expect(store.volumesMap[0].chapters.length).toBe(2);
+    store.deleteChapter({chapterId: "rkcJ0TTgG", volumeId: "rkptjCZxG"});
+    expect(store.volumesMap[0].chapters.length).toBe(1);
+  });
   it("calls agent.Volumes.all", function() {
     /*return agent.Volumes.all()
     .then(data => {
@@ -35,6 +40,7 @@ describe("VolumesStore", function() {
     expect(spy).toHaveBeenCalled();
   });
   it("sets volumesMap after loading volumes", function() {
+    expect.assertions(1);
     store.loadVolumes().then(() => {
         expect(store.volumesMap.length).toBe(3);
     });
