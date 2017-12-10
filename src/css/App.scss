@@ -1,4 +1,5 @@
 @import "_variables.scss";
+@import "_mixins.scss";
 
 .app {
   display: grid;
@@ -20,7 +21,7 @@
   min-height: 100vh;
 }
 
-@media (min-width: $first-breakpoint) {
+@include respond-to(small) {
   .app {
     box-shadow: -5px 0 15px -5px #000, 5px 0 15px -5px #000;
     grid-template-columns: 260px 1fr;

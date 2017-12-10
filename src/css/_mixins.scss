@@ -1,0 +1,38 @@
+@mixin respond-to($breakpoint) {
+
+  @if $breakpoint == "xx-small" {
+    @content;
+  }
+
+  @if $breakpoint == "x-small" {
+    @media (min-width: $x-small-breakpoint) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == "small" {
+    @media (min-width: $small-breakpoint) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (min-width: $large-breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin set-page-height($breakpoint, $height) {
+  @include respond-to($breakpoint) {
+    .page-container {
+      img {
+        height: $height;
+      }
+
+      .image-container {
+          height: calc(#{$height} + 4rem);
+      }
+    }
+  }
+}

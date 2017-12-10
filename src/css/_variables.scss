@@ -5,12 +5,14 @@ $header-color: #151515;
 $main-section-color: #1b1b1b;
 $header-border-color: #0d0d0d;
 
-$first-breakpoint: 480px;
-$first-breakpoint-px: $first-breakpoint + 0px;
+$x-small-breakpoint: 630px;
+$small-breakpoint: 770px;
+$large-breakpoint: 940px;
+
 $page-navigation-arrow-height: 10px;
 $navbar-height: 40px;
 $header-height: 100px;
 
-:export {
-  firstBreakpoint: $first-breakpoint;
-}
+$image-height-xx-small: 750px;
+$image-height-small: 600px;
+$image-height-large: 800px;

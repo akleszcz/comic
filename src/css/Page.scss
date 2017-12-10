@@ -1,14 +1,21 @@
+@import "_variables.scss";
+@import "_mixins.scss";
+
 .page-container {
   display: flex;
   flex-direction: column;
 
   img {
     display: block;
-    margin: 1rem auto;
+    margin: 2rem auto;
+  }
+
+  .image-container {
+    margin: 0 2rem;
   }
 
 }
 
-.image-container {
-    height: calc(525px + 2rem);
-}
+@include set-page-height(xx-small, $image-height-xx-small);
+@include set-page-height(small, $image-height-small);
+@include set-page-height(large, $image-height-large);
