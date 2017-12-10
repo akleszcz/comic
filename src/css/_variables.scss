@@ -1,7 +1,15 @@
 $font-color: #c3c3c3;
-$first-breakpoint: 320px;
+$background-color: #0d0d0d;
+$menu-navbar-color: #232323;
+$header-color: #151515;
+$main-section-color: #1b1b1b;
+$header-border-color: #0d0d0d;
+
+$first-breakpoint: 480px;
 $first-breakpoint-px: $first-breakpoint + 0px;
 $page-navigation-arrow-height: 10px;
+$navbar-height: 40px;
+$header-height: 100px;
 
 :export {
   firstBreakpoint: $first-breakpoint;

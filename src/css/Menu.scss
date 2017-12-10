@@ -1,0 +1,9 @@
+@import "_variables.scss";
+
+.menu {
+  background: $menu-navbar-color;
+  grid-area: menu;
+  /*height: 100vh;*/
+  min-height: 100vh;
+  padding: 1rem;
+}

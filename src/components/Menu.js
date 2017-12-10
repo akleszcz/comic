@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VolumeMenu from './VolumeMenu';
-import '../css/Menu.css';
+import '../css/Menu.scss';
 //import volumeStore from '../stores/VolumeStore';
 import { inject, observer } from 'mobx-react';
 import MediaQuery from 'react-responsive';

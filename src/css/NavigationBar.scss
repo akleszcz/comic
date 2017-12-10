@@ -1,3 +1,5 @@
+@import "_variables.scss";
+
 .navigation-list {
   display: flex;
   padding: 10px;
@@ -9,7 +11,7 @@
 
 .navigation-bar {
   align-items: center;
-  background: #606060;
+  background: $menu-navbar-color;
   display: flex;
   grid-area: navigation-bar;
   justify-content: flex-end;

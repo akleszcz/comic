@@ -1,0 +1,15 @@
+@import "_variables.scss";
+
+.main-section {
+  background: $main-section-color;
+  grid-area: main-section;
+  p {
+    margin: 15px;
+  }
+}
+
+@media (min-width: $first-breakpoint) {
+  .main-section {
+    box-shadow: inset 11px 0px 26px -6px rgba(0,0,0,1);
+  }
+}

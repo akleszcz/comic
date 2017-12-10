@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/MainSection.css';
+import '../css/MainSection.scss';
 import { Route } from 'react-router-dom'
 import Chapter from './Chapter';
 import Page from './Page';
@@ -12,7 +12,7 @@ class MainSection extends Component {
     return (
       <main className="main-section">
         <Route exact path="/" render = {() => (
-          <h1>Welcome</h1>
+          <p>Welcome</p>
         )}/>
         <Route path="/chapters/:id" component = { Chapter }/>
         <Route path="/pages/:id" component = { Page }/>
