@@ -5,15 +5,17 @@
   display: flex;
   flex-direction: column;
 
-  img {
-    display: block;
-    margin: 2rem auto;
-  }
-
   .image-container {
     margin: 0 2rem;
   }
 
+  .loading-spinner {
+    margin-top: 50%;  }
+
+  img {
+    display: block;
+    margin: 2rem auto;
+  }
 }
 
 @include set-page-height(xx-small, $image-height-xx-small);

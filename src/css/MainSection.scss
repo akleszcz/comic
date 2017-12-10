@@ -4,6 +4,12 @@
 .main-section {
   background: $main-section-color;
   grid-area: main-section;
+  min-height: 100vh;
+
+  .page-thumbnail {
+    height: 200px;
+  }
+
   p {
     margin: 15px;
   }
