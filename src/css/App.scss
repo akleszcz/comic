@@ -42,24 +42,36 @@
 
     .header {
       height: $header-height;
-      z-index: 1; /*to cover menu top*/
+
     }
 
     .main-section {
       margin-left: $menu-width;
+      position: relative;
+      .loading-spinner {
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: 50%;
+        transform: translate(0, -50%);
+      }
     }
 
     .menu {
-      box-shadow: 10px 0 35px -5px #000;
-      float: left;
       position: absolute;
-      top: calc(#{$header-height} + #{$navbar-height});
+      top: calc(#{$header-height} + #{$navbar-height} + 2px);
       bottom: 0;
       width: $menu-width;
     }
 
     .navbar {
       height: $navbar-height;
+    }
+
+    .ReactModal__Content {
+
     }
   }
 

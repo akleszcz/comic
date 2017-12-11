@@ -16,9 +16,7 @@
 }
 
 @include respond-to(small) {
-  @supports (display:grid) {
-    .main-section {
-      box-shadow: inset 11px 0px 26px -6px rgba(0,0,0,1);
-    }
+  .main-section {
+    box-shadow: inset 11px 0px 26px -6px rgba(0,0,0,1);
   }
 }
