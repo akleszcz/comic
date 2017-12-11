@@ -24,7 +24,7 @@
 @include respond-to(small) {
   .app {
     box-shadow: -5px 0 15px -5px #000, 5px 0 15px -5px #000;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: $menu-width 1fr;
     grid-template-rows: $navbar-height $header-height auto;
     grid-template-areas:
       "navigation-bar navigation-bar"
@@ -32,6 +32,35 @@
       "menu main-section";
     max-width: 1000px;
     margin: 0 auto;
+  }
+
+  @supports (not (display:grid))
+  {
+    .app {
+      position: relative;
+    }
+
+    .header {
+      height: $header-height;
+      z-index: 1; /*to cover menu top*/
+    }
+
+    .main-section {
+      margin-left: $menu-width;
+    }
+
+    .menu {
+      box-shadow: 10px 0 35px -5px #000;
+      float: left;
+      position: absolute;
+      top: calc(#{$header-height} + #{$navbar-height});
+      bottom: 0;
+      width: $menu-width;
+    }
+
+    .navbar {
+      height: $navbar-height;
+    }
   }
 
   .hamburger-menu {

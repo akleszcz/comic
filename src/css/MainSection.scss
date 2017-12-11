@@ -11,12 +11,14 @@
   }
 
   p {
-    margin: 15px;
+    padding: 25px;
   }
 }
 
 @include respond-to(small) {
-  .main-section {
-    box-shadow: inset 11px 0px 26px -6px rgba(0,0,0,1);
+  @supports (display:grid) {
+    .main-section {
+      box-shadow: inset 11px 0px 26px -6px rgba(0,0,0,1);
+    }
   }
 }
