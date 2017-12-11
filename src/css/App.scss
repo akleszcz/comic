@@ -34,46 +34,14 @@
     margin: 0 auto;
   }
 
-  @supports (not (display:grid))
-  {
-    .app {
-      position: relative;
-    }
-
-    .header {
-      height: $header-height;
-
-    }
-
-    .main-section {
-      margin-left: $menu-width;
-      position: relative;
-      .loading-spinner {
-        margin: 0 auto;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 50%;
-        bottom: 50%;
-        transform: translate(0, -50%);
-      }
-    }
-
-    .menu {
-      position: absolute;
-      top: calc(#{$header-height} + #{$navbar-height} + 2px);
-      bottom: 0;
-      width: $menu-width;
-    }
-
-    .navbar {
-      height: $navbar-height;
-    }
-
-    .ReactModal__Content {
-
-    }
+  @supports (not (display:grid)) {
+    @include lay-out-without-grid;
   }
+
+@media screen\0 { /* Internet Explorer */
+    @include lay-out-without-grid;
+  }
+
 
   .hamburger-menu {
     display: none;
