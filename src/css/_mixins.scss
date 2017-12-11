@@ -1,7 +1,37 @@
 @mixin respond-to($breakpoint) {
 
-  @if $breakpoint == "xx-small" {
+  @if $breakpoint == "default" {
     @content;
+  }
+
+  @if $breakpoint == "xxxxxx-small" {
+    @media (min-width: $xxxxxx-small-breakpoint) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == "xxxxx-small" {
+    @media (min-width: $xxxxx-small-breakpoint) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == "xxxx-small" {
+    @media (min-width: $xxxx-small-breakpoint) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == "xxx-small" {
+    @media (min-width: $xxx-small-breakpoint) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == "xx-small" {
+    @media (min-width: $xx-small-breakpoint) {
+      @content;
+    }
   }
 
   @if $breakpoint == "x-small" {

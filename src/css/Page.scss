@@ -18,6 +18,9 @@
   }
 }
 
+@include set-page-height(xxxxxx-small, $image-height-xxxxxx-small);
+@include set-page-height(xxxxx-small, $image-height-xxxxx-small);
+@include set-page-height(xxxx-small, $image-height-xxxx-small);
+@include set-page-height(xxx-small, $image-height-xxx-small);
 @include set-page-height(xx-small, $image-height-xx-small);
-@include set-page-height(small, $image-height-small);
 @include set-page-height(large, $image-height-large);
