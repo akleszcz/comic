@@ -38,10 +38,9 @@
     @include lay-out-without-grid;
   }
 
-@media screen\0 { /* Internet Explorer */
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /* Internet Explorer */
     @include lay-out-without-grid;
   }
-
 
   .hamburger-menu {
     display: none;
