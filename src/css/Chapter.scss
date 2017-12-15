@@ -2,19 +2,19 @@
 @import "_mixins.scss";
 
 .chapter-container {
-  margin: 0 auto;
+  margin: 1rem auto;
   max-width: 1200px;
   padding: 0 1rem;
 }
 
 .page-thumbnail {
-  width: 70%;
   margin: 1rem auto;
 }
 
 .cell img {
   display: block;
-  margin: 1rem;
+  margin: 1rem auto;
+  width: 80%;
 }
 
 .pages-grid {

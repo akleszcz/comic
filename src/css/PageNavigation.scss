@@ -8,6 +8,7 @@ $arrow-svg-color: url-encode-color($font-color);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .container::after {
