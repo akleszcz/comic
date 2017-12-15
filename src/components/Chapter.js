@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/Chapter.css';
+import '../css/Chapter.scss';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import LoadingSpinner from './LoadingSpinner';

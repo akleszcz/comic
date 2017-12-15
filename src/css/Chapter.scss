@@ -1,0 +1,30 @@
+@import "_variables.scss";
+@import "_mixins.scss";
+
+.chapter-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.page-thumbnail {
+  width: 70%;
+  margin: 1rem auto;
+}
+
+.cell img {
+  display: block;
+  margin: 1rem;
+}
+
+.pages-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+@include set-thumbnail-width(default, 2);
+@include set-thumbnail-width(xxxx-small, 3);
+@include set-thumbnail-width(x-small, 4);
+@include set-thumbnail-width(small, 3);
+@include set-thumbnail-width(large, 4);

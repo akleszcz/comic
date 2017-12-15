@@ -53,15 +53,25 @@
   }
 }
 
-@mixin set-page-height($breakpoint, $height) {
+@mixin set-page-width($breakpoint, $width) {
   @include respond-to($breakpoint) {
     .page-container {
       img {
-        height: $height;
+        width: $width;
       }
 
       .image-container {
-          height: calc(#{$height} + 4rem);
+          height: calc(1.4 * #{$width} + 4rem);
+      }
+    }
+  }
+}
+
+@mixin set-thumbnail-width($breakpoint, $divider) {
+  @include respond-to($breakpoint) {
+    .pages-grid {
+      .cell {
+        width: calc(100% / #{$divider});
       }
     }
   }
@@ -101,8 +111,5 @@
 
   .navbar {
     height: $navbar-height;
-  }
-
-  .ReactModal__Content {
   }
 }

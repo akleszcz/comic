@@ -18,9 +18,10 @@
   }
 }
 
-@include set-page-height(xxxxxx-small, $image-height-xxxxxx-small);
-@include set-page-height(xxxxx-small, $image-height-xxxxx-small);
-@include set-page-height(xxxx-small, $image-height-xxxx-small);
-@include set-page-height(xxx-small, $image-height-xxx-small);
-@include set-page-height(xx-small, $image-height-xx-small);
-@include set-page-height(large, $image-height-large);
+@include set-page-width(xxxxxx-small, $image-width-xxxxxx-small);
+@include set-page-width(xxxxx-small, $image-width-xxxxx-small);
+@include set-page-width(xxxx-small, $image-width-xxxx-small);
+@include set-page-width(xxx-small, $image-width-xxx-small);
+@include set-page-width(xx-small, $image-width-xx-small);
+@include set-page-width(small, $image-width-small);
+@include set-page-width(large, $image-width-large);
