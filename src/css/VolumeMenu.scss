@@ -1,0 +1,29 @@
+.volume-menu {
+  margin-bottom: 1rem;
+
+  input {
+    width: 85%;
+  }
+
+  ul {
+    li {
+      margin: .5rem 0 .5rem 1rem;
+      position: relative;
+    }
+
+    a {
+      max-width: 173px;
+    }
+  }
+
+  .chapter-title-container,
+  .add-chapter-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .add-chapter-container {
+    margin: .2rem 0 .5rem 0;
+  }
+}

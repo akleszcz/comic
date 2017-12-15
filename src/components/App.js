@@ -27,7 +27,6 @@ class App extends Component {
           isOpen={this.props.uiStateStore.isLoginModalOpen}
           contentLabel="Login Modal">
             <Login/>
-            <button onClick={() => this.props.uiStateStore.closeLoginModal()}>close</button>
         </Modal>
         <div className="app">
           <NavigationBar/>

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import { Button, Input } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/Login.scss';
+import Close from './icons/Close';
 
 @inject('authenticationStore')
 @inject('uiStateStore')
@@ -34,11 +38,11 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        Log in
-        <form onSubmit={this.handleSubmitForm}>
-          <input type="login" placeholder="Login" onChange={this.handleLoginChange}/>
-          <input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
-          <button>Sign in</button>
+        <form className="login-form" onSubmit={this.handleSubmitForm}>
+          <Close className="close" onClick={() => this.props.uiStateStore.closeLoginModal()}/>
+          <Input type="login" placeholder="Login" onChange={this.handleLoginChange}/>
+          <Input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
+          <Button>Sign in</Button>
         </form>
       </div>
     );

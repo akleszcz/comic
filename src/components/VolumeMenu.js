@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/VolumeMenu.css';
+import '../css/VolumeMenu.scss';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import AddChapterView from './AddChapterView';
