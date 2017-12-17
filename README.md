@@ -1,3 +1,5 @@
+# Comic 
+
 ## Getting started
 
 Live demo is available at https://akleszcz.github.io/comic
