@@ -13,7 +13,7 @@ To execute Jest tests:
 ## Functionality
 
 The application is intended to serve as a comic reader website. It allows users to list all comic volumes and chapters, preview all pages in a chapter and navigate between pages.
-Additionally, users with administrative permissions can and create new chapters or delete existing ones. Test admin user credentials are:
+Additionally, users with administrative permissions can create new chapters or delete existing ones. Test admin user credentials can be used to check this features:
 - login: user
 - password: Password123
 
