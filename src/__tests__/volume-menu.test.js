@@ -6,6 +6,7 @@ import { MemoryRouter as Router, withRouter } from 'react-router-dom';
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
 import { ChapterStore } from '../stores/chapterStore';
+import { UserStore } from '../stores/userStore';
 import jsdom from 'jsdom';
 jest.mock("../agent");
 import agent from '../agent';
@@ -19,52 +20,19 @@ describe("VolumeMenu", function() {
   const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
   global.document = doc;
   global.window = doc.defaultView;
+
   beforeEach(function() {
-    userStore = {
+    /*userStore = {
       currentUser: {
         login: "user5",
         admin: true
       },
       loadingUser: false
-    },
+    },*/
+    userStore = new UserStore(),
     chapterStore = new ChapterStore(),
-      /*chapterStore = observable({
-        currentChapter: {
-          "thumbnails": [
-            {"url":"http://comic-rest.azurewebsites.net/images/volume1/chapter2/thumbnails/page1.png","id":"1"},
-            {"url":"http://comic-rest.azurewebsites.net/images/volume1/chapter2/thumbnails/page2.png","id":"2"},
-            {"url":"http://comic-rest.azurewebsites.net/images/volume1/chapter2/thumbnails/page3.png","id":"3"},
-            {"url":"http://comic-rest.azurewebsites.net/images/volume1/chapter2/thumbnails/page4.png","id":"4"},
-            {"url":"http://comic-rest.azurewebsites.net/images/volume1/chapter2/thumbnails/page5.png","id":"5"}
-          ],
-          "id":"rkcJ0TTgG"
-        },
-        get numberOfPages() {
-          return this.currentChapter.thumbnails.length;
-        },
-        get firstPageId() {
-          if (this.currentChapter.thumbnails[0]) {
-            return this.currentChapter.thumbnails[0].id;
-          }
-          return null;
-        },
-        get lastPageId() {
-          if (this.currentChapter.thumbnails[this.currentChapter.thumbnails.length - 1]) {
-            return this.currentChapter.thumbnails[this.currentChapter.thumbnails.length - 1].id;
-          }
-          return null;
-        },
-        loadChapter(id, { acceptCached = false } = {}) {
-          this.loadChapterCalled = true;
-        },
-        createChapter(title, position, volumeId) {
-          this.createChapterCalled = true;
-        },
-        deleteChapter(chapterId, volumeId) {
-          this.deleteChapterCalled = true;
-        }
-      })*/
       volumeDetails = {
+        "volume_id": "rkptjCZxG",
         "order_number":1,
         "title":"Cats",
         "chapters": [
@@ -77,15 +45,42 @@ describe("VolumeMenu", function() {
         userStore,
         chapterStore
       };
+      userStore.setUser();
     });
+
     it('displays volume title', function() {
       const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       expect(wrapper.find(".volume-menu").find('h2').at(0).text()).toBe("Volume 1: Cats");
     });
+
     it('hides chapters when clicked', function() {
       const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       expect(wrapper.find('ul').children().length).toBe(volumeDetails.chapters.length);
       wrapper.find(".volume-menu").find('h2').simulate('click');
       expect(wrapper.find('ul').children().length).toBe(0);
+    });
+
+    it('displays delete button for each chapter if logged user has admin permissions', function() {
+      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
+      /*let allChaptersCount = 0;
+      volumesStore.volumes.forEach(volume => {
+        allChaptersCount += volume.chapters.length;
+      });*/
+      //console.log(wrapper.debug());
+      expect(wrapper.find('svg.delete-chapter').length).toBe(volumeDetails.chapters.length);
+    });
+
+    it('displays add button after each chapter if logged user has admin permissions', function() {
+      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
+      expect(wrapper.find('.add-chapter-container').length).toBe(volumeDetails.chapters.length);
+    });
+
+    it('calls chapterStore.deleteChapter on delete button click', function() {
+      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
+      const deleteChapter = wrapper.find('svg.delete-chapter').at(0);
+      expect(wrapper.find('ul').children().length).toBe(2);
+      const spy = jest.spyOn(chapterStore, 'deleteChapter');
+      deleteChapter.simulate('click');
+      expect(spy).toHaveBeenCalled();
     });
 });

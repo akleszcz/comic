@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import agent from '../agent';
 
-class UserStore {
+export class UserStore {
   @observable currentUser = { login: undefined, admin: false };
   @observable loadingUser = false;
 

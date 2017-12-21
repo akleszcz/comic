@@ -12,7 +12,8 @@ const Volumes = {
         },
         {"order_number":3,"title":"Birds","chapters":
           [{"title":"Owl","id":"Sy37RT6lf"},{"title":"Magpie","id":"HyXVR6Tgz"}],
-        "id":"BkeCiRbxG"}
+          "id":"BkeCiRbxG"
+        }
       ];
       resolve(data);
     });
@@ -58,12 +59,28 @@ const Chapters = {
         const data = {
           "success": true,
           "message": "Chapter removed successfully."
-        }
+        };
+        resolve(data);
+      });
+    }
+};
+
+const User = {
+  byToken: () =>
+    {
+      return new Promise((resolve, reject) => {
+        const data = {
+          "success": true,
+          "login": "user",
+          "admin": true
+        };
         resolve(data);
       });
     }
 };
 
 export default {
-  Volumes
+  Volumes,
+  Chapters,
+  User
 };
