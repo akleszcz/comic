@@ -5,9 +5,10 @@ import Enzyme from "enzyme";
 import { MemoryRouter as Router, withRouter } from 'react-router-dom';
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
-//import chapterStore from '../stores/chapterStore';
+import { ChapterStore } from '../stores/chapterStore';
 import jsdom from 'jsdom';
-
+jest.mock("../agent");
+import agent from '../agent';
 
 import Adapter from "enzyme-adapter-react-16";
 
@@ -26,7 +27,8 @@ describe("VolumeMenu", function() {
       },
       loadingUser: false
     },
-      chapterStore = observable({
+    chapterStore = new ChapterStore(),
+      /*chapterStore = observable({
         currentChapter: {
           "thumbnails": [
             {"url":"http://comic-rest.azurewebsites.net/images/volume1/chapter2/thumbnails/page1.png","id":"1"},
@@ -61,7 +63,7 @@ describe("VolumeMenu", function() {
         deleteChapter(chapterId, volumeId) {
           this.deleteChapterCalled = true;
         }
-      }),
+      })*/
       volumeDetails = {
         "order_number":1,
         "title":"Cats",

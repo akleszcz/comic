@@ -2,7 +2,7 @@ import { observable, action, computed } from 'mobx';
 import agent from '../agent';
 import volumesStore from './volumesStore';
 
-class ChapterStore {
+export class ChapterStore {
   @observable isLoading = false;
   @observable currentChapter = { id: '', thumbnails: [] };
 

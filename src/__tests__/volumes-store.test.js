@@ -6,7 +6,8 @@ describe("VolumesStore", function() {
   let store;
   beforeEach(function() {
     store = new VolumesStore();
-    store.volumesMap = [
+    store.loadVolumes();
+    /*store.volumesMap = [
       {"order_number":1,"title":"Cats","chapters":
         [{"title":"Maine Coon","id":"rkcJ0TTgG"},{"title":"Siamese","id":"B1DrCTpgM"}],
         "id":"rkptjCZxG"
@@ -15,7 +16,7 @@ describe("VolumesStore", function() {
         [{"title":"Labrador","id":"r1_66pTxM"},{"title":"Husky","id":"r19NC6Tlz"},{"title":"Sausage dog","id":"S1grCTaez"}],
         "id":"rkETjCbeM"
       }
-    ];
+    ];*/
   });
   it("adds new chapter", function() {
     expect(store.volumesMap[0].chapters.length).toBe(2);
