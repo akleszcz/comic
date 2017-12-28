@@ -48,8 +48,8 @@ class Login extends Component {
           <Input type="login" placeholder="Login" onChange={this.handleLoginChange}/>
           <Input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
           <Button>Sign in</Button>
+          <Error error={this.props.authenticationStore.error} inProgress={this.props.authenticationStore.inProgress}/>
         </form>
-        <Error error={this.props.authenticationStore.error} inProgress={this.props.authenticationStore.inProgress}/>
       </div>
     );
   }
