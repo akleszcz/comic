@@ -4,6 +4,7 @@ import { Button, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/Login.scss';
 import Close from './icons/Close';
+import Error from './Error';
 
 @inject('authenticationStore')
 @inject('uiStateStore')
@@ -32,7 +33,11 @@ class Login extends Component {
   handleSubmitForm(e) {
     e.preventDefault();
     this.props.authenticationStore.login()
-      .then(() => this.props.uiStateStore.closeLoginModal());
+    .then(() => {
+      if (!this.props.authenticationStore.error) {
+        this.props.uiStateStore.closeLoginModal();
+      }
+    });
   };
 
   render() {
@@ -44,6 +49,7 @@ class Login extends Component {
           <Input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
           <Button>Sign in</Button>
         </form>
+        <Error error={this.props.authenticationStore.error} inProgress={this.props.authenticationStore.inProgress}/>
       </div>
     );
   }

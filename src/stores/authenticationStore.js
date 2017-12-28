@@ -5,7 +5,7 @@ import userStore from './userStore';
 
 class AuthenticationStore {
   @observable inProgress = false;
-  @observable errors = undefined;
+  @observable error = undefined;
 
   @observable values = {
     login: '',
@@ -27,17 +27,15 @@ class AuthenticationStore {
 
   @action login() {
     this.inProgress = true;
-    this.errors = undefined;
+    this.error = undefined;
     return agent.User.login(this.values.login, this.values.password)
-      .then(({ token }) => {
-        commonStore.setToken(token);
-      })
+      .then(({ token }) => commonStore.setToken(token))
       .then(() => userStore.setUser())
-      .then(action(() => { this.inProgress = false; }))
       .catch(action((err) => {
-        this.errors = err.response && err.response.body && err.response.body.errors;
-        throw err;
-      }));
+        this.error = err.response && err.response.body && err.response.body.message;
+        ///throw err;
+      }))
+      .finally(action(() => { this.inProgress = false; }));
   }
 
   @action logout() {

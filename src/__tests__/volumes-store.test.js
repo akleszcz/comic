@@ -33,7 +33,7 @@ describe("VolumesStore", function() {
     expect(store.volumesMap.length).toBe(0);
     expect.assertions(2);
     store.loadVolumes().then(() => {
-        expect(store.volumesMap.length).toBe(3);
+      expect(store.volumesMap.length).toBe(3);
     });
   });
 })

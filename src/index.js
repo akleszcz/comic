@@ -12,7 +12,9 @@ import authenticationStore from './stores/authenticationStore';
 import commonStore from './stores/commonStore';
 import { useStrict } from 'mobx';
 import { Provider } from 'mobx-react';
+import promiseFinally from 'promise.prototype.finally';
 
+promiseFinally.shim();
 useStrict(true);
 
 const stores = {
