@@ -22,31 +22,24 @@ describe("VolumeMenu", function() {
   global.window = doc.defaultView;
 
   beforeEach(function() {
-    /*userStore = {
-      currentUser: {
-        login: "user5",
-        admin: true
-      },
-      loadingUser: false
-    },*/
     userStore = new UserStore(),
     chapterStore = new ChapterStore(),
-      volumeDetails = {
-        "volume_id": "rkptjCZxG",
-        "order_number":1,
-        "title":"Cats",
-        "chapters": [
-          {"title":"Maine Coon","id":"rkcJ0TTgG"},
-          {"title":"Siamese","id":"B1DrCTpgM"}
-        ]
-      },
-      volumeNumber = 1;
-      stores = {
-        userStore,
-        chapterStore
-      };
-      userStore.setUser();
-    });
+    volumeDetails = {
+      "volume_id": "rkptjCZxG",
+      "order_number":1,
+      "title":"Cats",
+      "chapters": [
+        {"title":"Maine Coon","id":"rkcJ0TTgG"},
+        {"title":"Siamese","id":"B1DrCTpgM"}
+      ]
+    },
+    volumeNumber = 1;
+    stores = {
+      userStore,
+      chapterStore
+    };
+    userStore.setUser();
+  });
 
     it('displays volume title', function() {
       const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
@@ -62,12 +55,7 @@ describe("VolumeMenu", function() {
 
     it('displays delete button for each chapter if logged user has admin permissions', function() {
       const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
-      /*let allChaptersCount = 0;
-      volumesStore.volumes.forEach(volume => {
-        allChaptersCount += volume.chapters.length;
-      });*/
-      //console.log(wrapper.debug());
-      expect(wrapper.find('svg.delete-chapter').length).toBe(volumeDetails.chapters.length);
+      expect(wrapper.find('button.delete-chapter').length).toBe(volumeDetails.chapters.length);
     });
 
     it('displays add button after each chapter if logged user has admin permissions', function() {
@@ -77,7 +65,7 @@ describe("VolumeMenu", function() {
 
     it('calls chapterStore.deleteChapter on delete button click', function() {
       const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
-      const deleteChapter = wrapper.find('svg.delete-chapter').at(0);
+      const deleteChapter = wrapper.find('button.delete-chapter').at(0);
       expect(wrapper.find('ul').children().length).toBe(2);
       const spy = jest.spyOn(chapterStore, 'deleteChapter');
       deleteChapter.simulate('click');

@@ -95,11 +95,12 @@
 
   .main-section {
     display: block; /* Internet Explorer */
-    position: absolute;;
+    bottom: 0;
     left: $menu-width;
+    position: absolute;;
     right: 0;
     top: $header-height + $navbar-height + $header-border-width;
-    bottom: 0;
+
     .loading-spinner {
       margin: 0 auto;
       position: absolute;
