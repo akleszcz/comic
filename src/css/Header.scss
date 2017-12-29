@@ -7,7 +7,7 @@ $arrow-svg-color: url-encode-color($font-color);
   align-items: center;
   background: $header-color;
   border: solid $header-border-color;
-  border-width: 2px 0;
+  border-width: $header-border-width 0;
   display: flex;
   font-size: 2.3rem;
   grid-area: header;
