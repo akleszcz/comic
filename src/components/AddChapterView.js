@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import Add from './icons/Add';
+import '../css/AddChapterView.scss';
 
 @inject('chapterStore')
 @observer
