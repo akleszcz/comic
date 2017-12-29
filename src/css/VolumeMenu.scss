@@ -31,4 +31,10 @@
   .add-chapter-container {
     margin: .2rem 0 .5rem 0;
   }
+
+  .chapter-title-container {
+    a {
+      word-wrap: break-word;
+    }
+  }
 }
