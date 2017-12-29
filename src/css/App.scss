@@ -17,6 +17,11 @@
   color: $font-color;
 }
 
+.icon-button {
+  background-color: transparent;
+  border: 0;
+}
+
 #root {
   background: $background-color;
   min-height: 100vh;
@@ -36,6 +41,9 @@
   }
 
   @supports (not (display:grid)) {
+    .header {
+      height: $header-height;
+    }
     @include lay-out-without-grid;
   }
 

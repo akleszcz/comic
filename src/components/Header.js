@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <span className="hamburger-menu" onClick={() => this.props.uiStateStore.toggleMenuVisibility()}></span>
+        <button className="hamburger-menu icon-button" onClick={() => this.props.uiStateStore.toggleMenuVisibility()}></button>
         <h1>Title</h1>
       </header>
     );
