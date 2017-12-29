@@ -17,9 +17,9 @@ class Chapter extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    //if (!(prevProps.match.params.id === this.id)) {
+    if (!(prevProps.match.params.id === this.id)) {
         this.initiateStore();
-      //}
+      }
   }
 
   initiateStore() {
