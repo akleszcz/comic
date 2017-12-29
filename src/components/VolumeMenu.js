@@ -22,7 +22,7 @@ class VolumeMenu extends Component {
   createChapterItem(chapter, index) {
     let deleteButton = null, addChapterView = null;
     if (this.props.userStore.currentUser.admin) {
-      deleteButton = <Delete className="delete-chapter" onClick={() => this.deleteChapter(chapter.id, this.props.volumeDetails.id)}/>;
+      deleteButton = <button className="delete-chapter" onClick={() => this.deleteChapter(chapter.id, this.props.volumeDetails.id)}><Delete/></button>;
       addChapterView = <AddChapterView position={index + 1} volumeId={this.props.volumeDetails.id}/>;
     }
     return <li key={index}>

@@ -26,7 +26,7 @@ class AddChapterView extends Component {
     return (
       <div className="add-chapter-container">
         <input type = "text" onChange={this.handleTitleChange}/>
-        <Add onClick={this.addChapter}/>
+        <button><Add onClick={this.addChapter}/></button>
       </div>
     );
   }

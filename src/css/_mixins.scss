@@ -80,6 +80,12 @@
 @mixin lay-out-without-grid{
   .app {
     position: relative;
+
+    &::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
   }
 
   .header {
@@ -103,7 +109,9 @@
   }
 
   .menu {
-    position: absolute;
+    //position: absolute;
+    float: left;
+    min-height: 100vh;
     top: calc(#{$header-height} + #{$navbar-height} + 2px);
     bottom: 0;
     width: $menu-width;

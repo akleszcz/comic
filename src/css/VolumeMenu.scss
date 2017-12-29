@@ -1,8 +1,13 @@
 .volume-menu {
   margin-bottom: 1rem;
 
+  button {
+    background: transparent;
+    border: 0;
+  }
+
   input {
-    width: 85%;
+    width: 80%;
   }
 
   ul {
