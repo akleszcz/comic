@@ -8,9 +8,9 @@ class SignInView extends Component {
   render() {
     if (!this.props.userStore.currentUser.login) {
       return (
-        <span onClick={() => this.props.uiStateStore.openLoginModal()}>
+        <button className="icon-button" onClick={() => this.props.uiStateStore.openLoginModal()}>
             Sign in
-        </span>
+        </button>
       );
     }
 

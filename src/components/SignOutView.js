@@ -17,9 +17,9 @@ class SignOutView extends Component {
   render() {
     if (this.props.userStore.currentUser.login) {
       return (
-        <span onClick={this.signOut}>
+        <button className="icon-button" onClick={this.signOut}>
             Sign out
-        </span>
+        </button>
       );
     }
     return null;
