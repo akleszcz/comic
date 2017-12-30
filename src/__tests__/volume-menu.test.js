@@ -16,7 +16,7 @@ import Adapter from "enzyme-adapter-react-16";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("VolumeMenu", function() {
-  let userStore, chapterStore, volumeDetails, volumeNumber, stores;
+  let userStore, chapterStore, volumeDetails, volumeNumber, stores, wrapper;
   const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
   global.document = doc;
   global.window = doc.defaultView;
@@ -38,33 +38,28 @@ describe("VolumeMenu", function() {
       userStore,
       chapterStore
     };
-    userStore.setUser();
+    userStore.setUser().then(() => wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>));
   });
 
     it('displays volume title', function() {
-      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       expect(wrapper.find(".volume-menu").find('h2').at(0).text()).toBe("Volume 1: Cats");
     });
 
     it('hides chapters when clicked', function() {
-      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       expect(wrapper.find('ul').children().length).toBe(volumeDetails.chapters.length);
       wrapper.find(".volume-menu").find('h2').simulate('click');
       expect(wrapper.find('ul').children().length).toBe(0);
     });
 
     it('displays delete button for each chapter if logged user has admin permissions', function() {
-      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       expect(wrapper.find('button.delete-chapter').length).toBe(volumeDetails.chapters.length);
     });
 
     it('displays add button after each chapter if logged user has admin permissions', function() {
-      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       expect(wrapper.find('.add-chapter-container').length).toBe(volumeDetails.chapters.length);
     });
 
     it('calls chapterStore.deleteChapter on delete button click', function() {
-      const wrapper = mount(<Provider {...stores}><Router><VolumeMenu volumeDetails={volumeDetails} volumeNumber={volumeNumber} chapterStore={chapterStore} userStore={userStore}/></Router></Provider>);
       const deleteChapter = wrapper.find('button.delete-chapter').at(0);
       expect(wrapper.find('ul').children().length).toBe(2);
       const spy = jest.spyOn(chapterStore, 'deleteChapter');
