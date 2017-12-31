@@ -44,7 +44,7 @@ class Login extends Component {
     return (
       <div className="login">
         <form className="login-form" onSubmit={this.handleSubmitForm}>
-          <Close className="close" onClick={() => this.props.uiStateStore.closeLoginModal()}/>
+          <button className="close icon-button" onClick={() => this.props.uiStateStore.closeLoginModal()} ><Close/></button>
           <Input type="login" placeholder="Login" onChange={this.handleLoginChange}/>
           <Input type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
           <Button>Sign in</Button>
