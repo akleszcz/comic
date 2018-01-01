@@ -4,6 +4,11 @@
   display: flex;
   padding: 10px;
 
+  button {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
   li {
     margin: 3px 10px;
   }
