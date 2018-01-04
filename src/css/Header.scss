@@ -23,7 +23,6 @@ $arrow-svg-color: url-encode-color($font-color);
 
 .hamburger-menu {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20height%3D%2725%27%20width%3D%2725%27%3E%0A%20%3Cline%20x1%3D%220%22%20y1%3D%225%22%20x2%3D%2220%22%20y2%3D%225%22%20style%3D%22stroke%3A#{$arrow-svg-color}%3Bstroke-width%3A2%22%20%2F%3E%0A%20%3Cline%20x1%3D%220%22%20y1%3D%2212%22%20x2%3D%2220%22%20y2%3D%2212%22%20style%3D%22stroke%3A#{$arrow-svg-color}%3Bstroke-width%3A2%22%20%2F%3E%0A%20%3Cline%20x1%3D%220%22%20y1%3D%2219%22%20x2%3D%2220%22%20y2%3D%2219%22%20style%3D%22stroke%3A#{$arrow-svg-color}%3Bstroke-width%3A2%22%20%2F%3E%0A%3C%2Fsvg%3E");
-    content:"\f109";
     display: inline-block;
     position: absolute;
     margin: 0 1rem;
