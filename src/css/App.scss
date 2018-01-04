@@ -27,6 +27,12 @@
   min-height: 100vh;
 }
 
+@supports (not (display:grid)) {
+  .header {
+    height: $header-height;
+  }
+}
+
 @include respond-to(small) {
   .app {
     box-shadow: -5px 0 15px -5px #000, 5px 0 15px -5px #000;
@@ -41,9 +47,6 @@
   }
 
   @supports (not (display:grid)) {
-    .header {
-      height: $header-height;
-    }
     @include lay-out-without-grid;
   }
 
